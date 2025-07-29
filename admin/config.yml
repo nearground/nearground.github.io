@@ -1,0 +1,39 @@
+backend:
+  name: github
+  branch: master # Branch to update (optional; defaults to master)
+  repo: nearground/nearground.github.io
+  base_url: https://sveltia-cms-auth-2.munguolm.workers.dev # Path to ext auth provider
+
+publish_mode: simple
+media_folder: "assets/img/uploads"
+public_folder: static/media
+site_url: https://nearground.github.io
+collections:
+  - name: "blog" # Used in routes, e.g., /admin/collections/blog
+    label: "Blog" # Used in the UI
+    folder: "_posts" # The path to the folder where the documents are stored
+    create: true # Allow users to create new documents in this collection
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
+    fields: # The fields for each document, usually in front matter
+      - { label: "Layout", name: "layout", widget: "hidden", default: "post" }
+      - { label: "Comments", name: "gisqus_comments", widget: "hidden", default: "true" }
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Description", name: "description", widget: "string" }
+      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "Tags", name: "tags", widget: "markdown" }
+      - { label: "Categories", name: "categories", widget: "markdown" }
+      - { label: "related", name: "related_posts", widget: "hidden", default: "false" }
+
+  - name: "news"
+    label: "News"
+    folder: "_news"
+    create: true
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
+      - { label: "Layout", name: "layout", widget: "hidden", default: "post" }
+      - { label: "Comments", name: "gisqus_comments", widget: "hidden", default: "true" }
+      - { label: "Publish Date", name: "date", widget: "datetime" }
+      - { label: "Body", name: "body", widget: "markdown" }
+      - { label: "gisqus", name: "giscus_comments", widget: "hidden", default: "true" }
+    inline: true
