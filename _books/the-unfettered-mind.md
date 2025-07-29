@@ -13,7 +13,7 @@ finished: 2017-01-02
 released: 1600
 stars: 4
 # goodreads_review: 6318556633
-status: Queued
+status: Finished
 giscus_comments: true
 ---
 
