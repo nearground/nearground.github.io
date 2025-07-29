@@ -4,13 +4,13 @@ const ninja = document.querySelector('ninja-keys');
 // add the home and posts menu items
 ninja.data = [{
     id: "nav-about",
-    title: "about",
+    title: "About",
     section: "Navigation",
     handler: () => {
       window.location.href = "/";
     },
   },{id: "nav-blog",
-          title: "blog",
+          title: "Blog",
           description: "",
           section: "Navigation",
           handler: () => {
@@ -46,14 +46,14 @@ ninja.data = [{
           },
         },{id: "nav-teaching",
           title: "teaching",
-          description: "Materials for courses you taught. Replace this text with your description.",
+          description: "I haven&#39;t actually taught at any universities yet, so this shouldn&#39;t really be here.",
           section: "Navigation",
           handler: () => {
             window.location.href = "/teaching/";
           },
         },{id: "nav-people",
           title: "people",
-          description: "members of the lab or group",
+          description: "A one-man team",
           section: "Navigation",
           handler: () => {
             window.location.href = "/people/";
@@ -224,6 +224,17 @@ ninja.data = [{
         handler: () => {
           
             window.location.href = "/blog/2023/tikzjax/";
+          
+        },
+      },{id: "post-how-to-create-a-personal-website-and-blog-for-free",
+        
+          title: "How To Create a Personal Website and Blog for Free",
+        
+        description: "How to build a blog on Github Pages",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2023/how-this-site-was-built/";
           
         },
       },{id: "post-a-post-with-bibliography",
@@ -435,7 +446,12 @@ ninja.data = [{
             window.location.href = "/blog/2015/formatting-and-links/";
           
         },
-      },{id: "books-the-book-of-five-rings",
+      },{id: "books-eumeswil",
+          title: 'Eumeswil',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/eumeswil/";
+            },},{id: "books-the-book-of-five-rings",
           title: 'The Book of Five Rings',
           description: "",
           section: "Books",handler: () => {
@@ -445,6 +461,16 @@ ninja.data = [{
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/infinite_jest/";
+            },},{id: "books-laravel-up-and-running-3rd-edition",
+          title: 'Laravel Up and Running (3rd Edition)',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/laravel-up-and-running/";
+            },},{id: "books-on-the-marble-cliffs",
+          title: 'On the Marble Cliffs',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/on-the-marble-cliffs/";
             },},{id: "books-pale-fire",
           title: 'Pale Fire',
           description: "",
@@ -455,11 +481,31 @@ ninja.data = [{
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/patanjali-sutras/";
+            },},{id: "books-php-cookbook",
+          title: 'PHP Cookbook',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/php-cookbook/";
+            },},{id: "books-storm-of-steel",
+          title: 'Storm of Steel',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/storm-of-steel/";
             },},{id: "books-the-brothers-karamazov",
           title: 'The Brothers Karamazov',
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/the-brothers-karamazov/";
+            },},{id: "books-the-forest-passage",
+          title: 'The Forest Passage',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/the-forest-passage/";
+            },},{id: "books-the-glass-bees",
+          title: 'The Glass Bees',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/the-glass-bees/";
             },},{id: "news-a-simple-inline-announcement",
           title: 'A simple inline announcement.',
           description: "",
