@@ -1,6 +1,6 @@
 ---
 layout: book-review
-title: Swann's Way
+title: "Swann's Way"
 author: Marcel Proust
 # cover: assets/img/book_covers/infinite_jest.jpg
 olid: OL6724918M # use Open Library ID to fetch cover (if no `cover` is provided)

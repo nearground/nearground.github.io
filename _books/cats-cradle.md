@@ -1,6 +1,6 @@
 ---
 layout: book-review
-title: Cat's Cradle
+title: "Cat's Cradle"
 author: Kurt Vonnegut
 # cover: assets/img/book_covers/infinite_jest.jpg
 olid: OL37802089M # use Open Library ID to fetch cover (if no `cover` is provided)

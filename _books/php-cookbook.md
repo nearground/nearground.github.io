@@ -8,8 +8,8 @@ olid: OL48197723M # use Open Library ID to fetch cover (if no `cover` is provide
 categories: non-fiction software-dev php
 tags: top-100
 # buy_link: https://a.co/d/gcoCdjC
-started: 2024
-finished: 2024
+started: 2024-01-01
+finished: 2024-01-01
 released: 2023
 stars: 3
 # goodreads_review: 6318556633

@@ -12,25 +12,12 @@ toc:
   sidebar: "left"
 ---
 
-## Creating your own hosted website and blog, for free!
+## Adding a headless CMS to your Jekyll theme
 
-Hi all! I want to share with you how I built this blog.
-Most of the features in this site I borrowed from [alshedivat/al-folio](https://github.com/alshedivat/al-folio) `al-folio`. In order to edit my posts I am currently using an open-source app called [Decap CMS](https://github.com/decaporg/decap-cms). In order to edit posts online, you need to validate against Github's OAuth, but there's no safe way to do that from a static site directly. Luckily, you can setup your own [Decap CMS-compatible Cloudflare Worker](https://github.com/sveltia/sveltia-cms-auth) to run the authentication for you at no charge.
-I am currently running on Windows; if you want a Linux version of the tutorial, feel free to request it!
-This tutorial assumes you're familiar with `docker-compose`.
+I want to share with you how I publish my blog to Github pages.
+It's been a while since I originally wrote this article, titled "How to build your own website and host it for free". However, most of the steps involved just a recap of setting up the Jekyll template [alshedivat/al-folio](https://github.com/alshedivat/al-folio) `al-folio`. While it comes with its own set of quirks, most if not all of them can be solved by going searching in the discussions for your particular bug. One feature that is sorely missing from this template is the ability to edit and publish your own content, so this is what we'll cover here. We will use a headless CMS called [Decap CMS](https://github.com/decaporg/decap-cms), and a CMS authentication system, both free for use.
 
-### One, Two, Skip a Few...
-
-Well, why reinvent the wheel. The `all-folio`'s [README](https://github.com/alshedivat/al-folio/blob/master/README.md) is an excellent place to get started. This tutorial assumes that you are able to get the base site up and running in github-pages and that you have [gisqus](https://giscus.app/) enabled.
-
-### Almost there already!
-
-So your site is up and running. Now we'll add posts to it!
-
-#### Add a Content Management System (CMS)
-
-We'll be working with `decaporg/decap-cms`. [README](https://github.com/decaporg/decap-cms/blob/master/README.md)
-Setup is really easy if you're on Netlify. We're hosting it on Github Pages, so we'll need to create our own OAuth server for it. I made my own and tested out several of the ones provided in their documentation to no avail, except for one that runs on Cloudflare Workers. The best part-- it's also free. Score.
+## Decap CMS
 
 1. In the root folder, create an `admin` folder. We'll add two files there:
 
@@ -50,7 +37,7 @@ permalink: /admin/
 subtitle: login screen for decap
 title: Login
 nav: true
-nav_order: 6
+nav_order: 10
 dropdown: false
 publish_mode: editorial_workflow
 media_folder: "assets/uploads"
@@ -115,20 +102,19 @@ collections:
     inline: true
 ```
 
-This config file tells the CMS that we have two different collections of posts that we want to be able to create. It requires some kinds of fields, and others are conventions that `al-folio`'s posts already follow. You can add/edit to this list to some degree.
+This config file tells the CMS that we have two different collections of posts that we want to be able to create. It requires some kinds of fields, and others are conventions that `al-folio`'s posts already follow. You can add/edit to this list to some degree, like adding another collection for publishing your own book reviews.
 
 Once you rebuild the website with docker-compose, you'll notice you have a login button on your site. It won't work out of the box because we're not on Netlify due to OAuth requirements, so we'll create one ourselves.
 
-#### Create an OAuth "server"
+#### Adding OAuth
 
-Why go through all the trouble of creating an OAuth server just to login to a static site? Well, because you static sites can't do server-side logic, which means they can't exchange OAuth tokens with Github. For that, we need a tiny bit of server-side processing. So small, we could do without the server and run it off a Cloudflare worker.
+Luckily for us, we can run OAuth logic for free with the help of `sveltia`, a CMS authenticator that relies on an also-free Cloudflare workers script.
 
 [Follow this tutorial](https://github.com/sveltia/sveltia-cms-auth)
 
-You will need to create a Github OAuth App, a Cloudflare account, and enable Cloudflare Workers. Don't worry, you can sign up for the free plan without payment info.
-
-Follow it to a T! Don't be a smart guy like me and try to make sense out of Decap CMS's documentation. It will lead you astray!
+Make sure to follow the tutorial exactly, or you won't be able to make sense of what went wrong.
 
 #### Conclusion
 
-Hope you liked it. I will be editing this as I go. If I'm missing something feel free to request it.
+There ya go.
+If I'm missing something feel free to request it.
