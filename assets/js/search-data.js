@@ -446,21 +446,61 @@ ninja.data = [{
             window.location.href = "/blog/2015/formatting-and-links/";
           
         },
-      },{id: "books-eumeswil",
+      },{id: "books-2666",
+          title: '2666',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/2666/";
+            },},{id: "books-approaches-drugs-and-altered-states",
+          title: 'Approaches: Drugs and Altered States',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/approaches-drugs-and-altered-states/";
+            },},{id: "books-cat-39-s-cradle",
+          title: 'Cat&amp;#39;s Cradle',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/cats-cradle/";
+            },},{id: "books-el-laberinto-de-la-soledad",
+          title: 'El Laberinto de la Soledad',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/el-laberinto-de-la-soledad/";
+            },},{id: "books-eumeswil",
           title: 'Eumeswil',
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/eumeswil/";
+            },},{id: "books-ficciones",
+          title: 'Ficciones',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/ficciones/";
             },},{id: "books-the-book-of-five-rings",
           title: 'The Book of Five Rings',
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/five-rings/";
+            },},{id: "books-getting-back-to-happy",
+          title: 'Getting Back to Happy',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/getting-back-to-happy/";
             },},{id: "books-infinite-jest",
           title: 'Infinite Jest',
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/infinite_jest/";
+            },},{id: "books-invitation-to-a-beheading",
+          title: 'Invitation to a Beheading',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/invitation-to-a-beheading/";
+            },},{id: "books-the-key-of-dreams",
+          title: 'The Key of Dreams',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/la-clef-des-songes/";
             },},{id: "books-laravel-up-and-running-3rd-edition",
           title: 'Laravel Up and Running (3rd Edition)',
           description: "",
@@ -471,6 +511,11 @@ ninja.data = [{
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/on-the-marble-cliffs/";
+            },},{id: "books-oroonoko-or-the-royal-slave",
+          title: 'Oroonoko, or the Royal Slave',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/oroonoko/";
             },},{id: "books-pale-fire",
           title: 'Pale Fire',
           description: "",
@@ -481,16 +526,36 @@ ninja.data = [{
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/patanjali-sutras/";
+            },},{id: "books-pedro-paramo",
+          title: 'Pedro Paramo',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/pedro-paramo/";
             },},{id: "books-php-cookbook",
           title: 'PHP Cookbook',
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/php-cookbook/";
+            },},{id: "books-slaughterhouse-five",
+          title: 'Slaughterhouse-Five',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/slaughterhouse-five/";
             },},{id: "books-storm-of-steel",
           title: 'Storm of Steel',
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/storm-of-steel/";
+            },},{id: "books-swann-39-s-way",
+          title: 'Swann&amp;#39;s Way',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/swanns-way/";
+            },},{id: "books-the-blind-owl",
+          title: 'The Blind Owl',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/the-blind-owl/";
             },},{id: "books-the-brothers-karamazov",
           title: 'The Brothers Karamazov',
           description: "",
@@ -506,6 +571,46 @@ ninja.data = [{
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/the-glass-bees/";
+            },},{id: "books-the-idiot",
+          title: 'The Idiot',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/the-idiot/";
+            },},{id: "books-the-luzhin-defense",
+          title: 'The Luzhin Defense',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/the-luzhin-defense/";
+            },},{id: "books-the-neverending-story",
+          title: 'The Neverending Story',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/the-neverending-story/";
+            },},{id: "books-the-power-of-now",
+          title: 'The Power of Now',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/the-power-of-now/";
+            },},{id: "books-the-three-body-problem",
+          title: 'The Three-Body Problem',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/the-three-body-problem/";
+            },},{id: "books-the-unfettered-mind",
+          title: 'The Unfettered Mind',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/the-unfettered-mind/";
+            },},{id: "books-tropic-of-cancer",
+          title: 'Tropic Of Cancer',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/tropic-of-cancer/";
+            },},{id: "books-las-venas-abiertas-de-américa-latina",
+          title: 'Las venas abiertas de América Latina',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/venas-abiertas-de-latinoamerica/";
             },},{id: "news-a-simple-inline-announcement",
           title: 'A simple inline announcement.',
           description: "",
