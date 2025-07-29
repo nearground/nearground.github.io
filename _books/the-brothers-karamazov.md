@@ -5,7 +5,7 @@ author: Fyodor Dostoyevski
 # cover: assets/img/book_covers/infinite_jest.jpg
 olid: OL39800428M # use Open Library ID to fetch cover (if no `cover` is provided)
 #isbn: 978-0374528379 # use ISBN to fetch cover (if no `olid` is provided, dashes are optional)
-categories: existentialism fiction
+categories: existentialism fiction russian-literature
 tags: top-100
 # buy_link: https://a.co/d/gcoCdjC
 started: 2019-01-01

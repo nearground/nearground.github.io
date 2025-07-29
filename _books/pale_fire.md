@@ -5,7 +5,7 @@ author: Vladimir Nabokov
 # cover: assets/img/book_covers/infinite_jest.jpg
 olid: OL7500898M # use Open Library ID to fetch cover (if no `cover` is provided)
 #isbn: 978-0679723424 # use ISBN to fetch cover (if no `olid` is provided, dashes are optional)
-categories: post-modernism fiction poetry prose
+categories: post-modernism fiction poetry prose russian-literature
 tags: top-100
 # buy_link: https://a.co/d/gcoCdjC
 started: 2018-01-01

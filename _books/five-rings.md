@@ -5,7 +5,7 @@ author: Miyamoto Musashi
 #cover: assets/img/book_covers/infinite_jest.jpg
 olid: OL50992782M # use Open Library ID to fetch cover (if no `cover` is provided)
 #isbn: 1590309847 # use ISBN to fetch cover (if no `olid` is provided, dashes are optional)
-categories: non-fiction philosophy
+categories: non-fiction zen philosophy martial-arts
 tags: top-100
 # buy_link: https://a.co/d/gcoCdjC
 started: 2019-01-01
