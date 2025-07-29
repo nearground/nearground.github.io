@@ -435,11 +435,31 @@ ninja.data = [{
             window.location.href = "/blog/2015/formatting-and-links/";
           
         },
-      },{id: "books-the-godfather",
-          title: 'The Godfather',
+      },{id: "books-the-book-of-five-rings",
+          title: 'The Book of Five Rings',
           description: "",
           section: "Books",handler: () => {
-              window.location.href = "/books/the_godfather/";
+              window.location.href = "/books/five-rings/";
+            },},{id: "books-infinite-jest",
+          title: 'Infinite Jest',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/infinite_jest/";
+            },},{id: "books-pale-fire",
+          title: 'Pale Fire',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/pale_fire/";
+            },},{id: "books-the-yoga-sutras-of-patanjali",
+          title: 'The Yoga Sutras Of Patanjali',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/patanjali-sutras/";
+            },},{id: "books-the-brothers-karamazov",
+          title: 'The Brothers Karamazov',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/the-brothers-karamazov/";
             },},{id: "news-a-simple-inline-announcement",
           title: 'A simple inline announcement.',
           description: "",
