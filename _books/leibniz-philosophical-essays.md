@@ -16,4 +16,5 @@ stars: 5
 status: Reading
 giscus_comments: true
 ---
+
 A brilliant mathematical physicist, Leibniz strove to place science on religious foundations, outlining an active, organic and spiritual world composed of free individual substances harmoniously working out God's purposes. In doing so this major rationalist philosopher revolutionized logic, proposed notions too startling to publish, and laid bare scientific assumptions that many of us still possess.
