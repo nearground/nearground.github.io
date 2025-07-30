@@ -26,8 +26,3 @@ latest_posts:
 ---
 I come originally from an idyllic small town in Mexico called Puerto Vallarta. There, I had the fortune of getting a quality education as well as an appreciation for nature and beauty, growing up with a passion for music, reading, history, languages, critical thinking, and the outdoors. After doing a summer program at Phillips Exeter Academy, where I polished my python skills, and a semester in Computer Science at UNAM where I learned java, I temporarily switched gears and studied at Whitman College in Walla Walla, WA to pursue a degree in Econometrics. My education then became focused in statistical mathematics, game theory, mathematical philosophy, advanced economics, and machine learning applications of linear programming. 
 
-After graduation, I interned at Key Technology pioneering machine vision models for hyperspectral cameras
-
-
-
-I've had a passion for software development since high school, when I taught myself python. I went later on 
