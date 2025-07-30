@@ -5,7 +5,7 @@ author: Gottfried Wilhelm Leibniz
 # cover: assets/img/book_covers/infinite_jest.jpg
 olid: OL7592377M # use Open Library ID to fetch cover (if no `cover` is provided)
 #isbn: 1681376261  # use ISBN to fetch cover (if no `olid` is provided, dashes are optional)
-categories: fiction thriller noir
+categories: non-fiction philosophy
 tags: top-100
 # buy_link: https://a.co/d/gcoCdjC
 started: 2025-01-01
