@@ -32,7 +32,7 @@ ninja.data = [{
           },
         },{id: "nav-repositories",
           title: "Repositories",
-          description: "Edit the `_data/repositories.yml` and change the `github_users` and `github_repos` lists to include your own GitHub profile and repositories.",
+          description: "A short curated list of my current work",
           section: "Navigation",
           handler: () => {
             window.location.href = "/repositories/";
@@ -119,6 +119,11 @@ ninja.data = [{
           description: "",
           section: "Books",handler: () => {
               window.location.href = "/books/laravel-up-and-running/";
+            },},{id: "books-leibniz-philosophical-writings",
+          title: 'Leibniz: Philosophical Writings',
+          description: "",
+          section: "Books",handler: () => {
+              window.location.href = "/books/leibniz-philosophical-essays/";
             },},{id: "books-on-the-marble-cliffs",
           title: 'On the Marble Cliffs',
           description: "",
@@ -229,11 +234,6 @@ ninja.data = [{
           description: "",
           section: "News",handler: () => {
               window.location.href = "/news/2025-07-25-open-for-work/";
-            },},{id: "news-will-this-test-work",
-          title: 'Will this test work?',
-          description: "",
-          section: "News",handler: () => {
-              window.location.href = "/news/will-this-test-work/";
             },},{
         id: 'social-email',
         title: 'email',
