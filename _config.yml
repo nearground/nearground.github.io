@@ -122,10 +122,10 @@ disqus_shortname: al-folio # put your disqus shortname
 external_sources:
 #   - name: medium.com
 #     rss_url: https://medium.com/@al-folio/feed
-  # - name: Information Philosopher
-  #   posts:
-  #     - url: https://www.informationphilosopher.com/
-        #published_date: 2024-05-14
+# - name: Information Philosopher
+#   posts:
+#     - url: https://www.informationphilosopher.com/
+#published_date: 2024-05-14
 
 # -----------------------------------------------------------------------------
 # Newsletter
