@@ -20,7 +20,7 @@ collections:
       - {label: "Title", name: "title", widget: "string"}
       - {label: "Publish Date", name: "date", widget: "datetime"}
       - {label: "Description", name: "description", widget: "string"}
-      - {label: "Body", name: "content", widget: "markdown"}
+      - {label: "Body", name: "body", widget: "markdown"}
       - {label: "Tags", name: "tags", widget: "markdown"}
       - {label: "Categories", name: "categories", widget: "markdown"}
       - {label: "related", name: "related_posts", widget: "hidden", default: "false"}
@@ -34,5 +34,5 @@ collections:
     - {label: "Layout", name: "layout", widget: "hidden", default: "post"}
     - {label: "Comments", name: "gisqus_comments", widget: "hidden", default: "true"}
     - {label: "Publish Date", name: "date", widget: "datetime"}
-    - {label: "Body", name: "content", widget: "markdown"}
+    - {label: "Body", name: "body", widget: "markdown"}
     inline: true
