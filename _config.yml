@@ -44,7 +44,7 @@ repo_trophies:
 # Layout
 # -----------------------------------------------------------------------------
 
-navbar_fixed: true
+navbar_fixed: false
 footer_fixed: false
 search_enabled: true
 socials_in_search: true
@@ -119,13 +119,13 @@ disqus_shortname: al-folio # put your disqus shortname
 # External sources.
 # If you have blog posts published on medium.com or other external sources,
 # you can display them in your blog by adding a link to the RSS feed.
-# external_sources:
+external_sources:
 #   - name: medium.com
 #     rss_url: https://medium.com/@al-folio/feed
-#   - name: Google Blog
-#     posts:
-#       - url: https://blog.google/technology/ai/google-gemini-update-flash-ai-assistant-io-2024/
-#         published_date: 2024-05-14
+  # - name: Information Philosopher
+  #   posts:
+  #     - url: https://www.informationphilosopher.com/
+        #published_date: 2024-05-14
 
 # -----------------------------------------------------------------------------
 # Newsletter
@@ -390,7 +390,7 @@ enable_darkmode: true # enables switching between light/dark modes
 enable_navbar_social: false # enables displaying social links in the navbar on the about page
 enable_project_categories: true # enables categorization of projects into multiple categories
 enable_medium_zoom: true # enables image zoom feature (as on medium.com)
-enable_progressbar: true # enables a horizontal progress bar linked to the vertical scroll position
+enable_progressbar: false # enables a horizontal progress bar linked to the vertical scroll position
 enable_video_embedding: false # enables video embedding for bibtex entries. If false, the button opens the video link in a new window.
 
 # -----------------------------------------------------------------------------
