@@ -240,6 +240,11 @@ ninja.data = [{
           description: "",
           section: "News",handler: () => {
               window.location.href = "/news/2025-07-25-open-for-work/";
+            },},{id: "news-will-this-test-work",
+          title: 'Will this test work?',
+          description: "",
+          section: "News",handler: () => {
+              window.location.href = "/news/will-this-test-work/";
             },},{
         id: 'social-email',
         title: 'email',
