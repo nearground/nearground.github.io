@@ -4,7 +4,6 @@ gisqus_comments: "true"
 title: My Site is Up and Running again
 date: 2025-07-29T17:51:00.000-07:00
 description: Whoo!
-content: 
 tags: software-dev procgen
 categories: personal-site
 related_posts: "false"
