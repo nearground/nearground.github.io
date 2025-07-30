@@ -63,7 +63,7 @@ media_folder: "assets/uploads"
 ```markdown
 backend:
 name: github
-branch: master # Branch to update (optional; defaults to master)
+branch: main # Branch to update (whatever is your default branch. If left blank it uses master)
 repo: your-repo/your-repo.github.io
 
 publish_mode: editorial_workflow
