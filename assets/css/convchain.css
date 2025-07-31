@@ -24,7 +24,6 @@
   text-align: right;
 }
 
-
 canvas {
   background: black;
   cursor: crosshair;
@@ -84,7 +83,7 @@ canvas {
 
   .right-panel {
     padding: 8px 0 0 0;
-    float:right
+    float: right;
   }
   .buttons {
     padding: 10px 0;
