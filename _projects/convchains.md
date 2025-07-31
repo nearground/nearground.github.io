@@ -26,7 +26,7 @@ Ported from kchapelier
   </div>
 
   <h2>Options</h2>
-  <form class ="d-flex align-items-center justify-content-center">
+  <form class ="flex-column align-items-center justify-content-center">
       <div class="field option">
           <label for="sampleWidth">Sample width</label>
           <input type="range" id="sampleWidth" min="4" max="24" step="1" value="8" />
