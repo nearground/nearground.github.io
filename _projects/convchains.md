@@ -7,9 +7,50 @@ importance: 1
 category: fun
 giscus_comments: false
 ---
+
 Ported from kchapelier
 
-{% include convchains.liquid %}
+<div class="left-panel">
+  <h1>ConvChain GPU example</h1>
+
+  <h2>Sample pattern</h2>
+  <div style="position:relative; width: 240px; height:240px; background-color:rgba(0, 0, 0, 0.15);">
+      <canvas id="samplePattern" width="8" height="8" style="position:absolute; top: 50%; left: 50%; transform:translate(-50%, -50%); width:80px; height:80px; image-rendering: pixelated;"></canvas>
+  </div>
+  <button id="clear" style="padding: 10px 0;"> Clear </button>
+
+  <h2>Options</h2>
+  <form>
+      <div class="field option">
+          <label for="sampleWidth">Sample width</label>
+          <input type="range" id="sampleWidth" min="4" max="24" step="1" value="8" />
+          <span class="value">8</span>
+      </div>
+      <div class="field option">
+          <label for="sampleHeight">Sample height</label>
+          <input type="range" id="sampleHeight" min="4" max="24" step="1" value="8" />
+          <span class="value">8</span>
+      </div>
+      <div class="field option">
+          <label for="receptorSize">Receptor size (n)</label>
+          <input type="range" id="receptorSize" min="2" max="4" step="1" value="3" />
+          <span class="value">3</span>
+      </div>
+      <div class="field option">
+          <label for="temperature">Temperature</label>
+          <input type="range" id="temperature" min="0" max="0.5" value="0.01" step="0.001" />
+          <span class="value">0.01</span>
+      </div>
+  </form>
+</div>
+<div class="right-panel">
+  <h2>Generated patterns (iteration #<span id="iteration">0 + 0000</span> changes)</h2>
+  <div class="buttons">
+    <h2><button id="play">Start</button> <button id="next">Next</button> <button id="reset">Reset</button></h2>
+  </div>
+  <div class="convchain-canvas row"></div>
+
+</div>
 
 <script>
 (function(f){if(typeof exports==="object"&&typeof module!=="undefined"){module.exports=f()}else if(typeof define==="function"&&define.amd){define([],f)}else{var g;if(typeof window!=="undefined"){g=window}else if(typeof global!=="undefined"){g=global}else if(typeof self!=="undefined"){g=self}else{g=this}g.ConvChainGPU = f()}})(function(){var define,module,exports;return (function(){function r(e,n,t){function o(i,f){if(!n[i]){if(!e[i]){var c="function"==typeof require&&require;if(!f&&c)return c(i,!0);if(u)return u(i,!0);var a=new Error("Cannot find module '"+i+"'");throw a.code="MODULE_NOT_FOUND",a}var p=n[i]={exports:{}};e[i][0].call(p.exports,function(r){var n=e[i][1][r];return o(n||r)},p,p.exports,r,e,n,t)}return n[i].exports}for(var u="function"==typeof require&&require,i=0;i<t.length;i++)o(t[i]);return o}return r})()({1:[function(require,module,exports){
@@ -919,7 +960,7 @@ if(!ConvChainGPU.isSupported()) {
 
   const convchain = new ConvChainGPU(sample);
   convchain.setField(40, 40);
-  document.querySelector('.right-panel').appendChild(convchain.context.canvas);
+  document.querySelector('.convchain-canvas').appendChild(convchain.context.canvas);
 
   var samplePattern = document.getElementById('samplePattern'),
     sampleContext = samplePattern.getContext('2d'),
@@ -1160,7 +1201,7 @@ if(!ConvChainGPU.isSupported()) {
       resolution: [convchain.width, convchain.height],
       backgroundTexture: texture,
       textureTiles: options.useTiles > 1 ? textureTiles2 : textureTiles1,
-      useTiles: options.useTiles ? 1 : 0
+      useTiles: 0
     }, null);
   };
 
