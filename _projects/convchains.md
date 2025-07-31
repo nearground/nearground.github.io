@@ -11,16 +11,22 @@ giscus_comments: false
 Ported from kchapelier
 
 <div class="left-panel">
-  <h1>ConvChain GPU example</h1>
+  <h1 clas="row d-flex align-items-center justify-content-center">ConvChain GPU example</h1>
 
-  <h2>Sample pattern</h2>
-  <div style="position:relative; width: 240px; height:240px; background-color:rgba(0, 0, 0, 0.15);">
-      <canvas id="samplePattern" width="8" height="8" style="position:absolute; top: 50%; left: 50%; transform:translate(-50%, -50%); width:80px; height:80px; image-rendering: pixelated;"></canvas>
+  <h2 class="row d-flex align-items-center justify-content-center">Sample pattern</h2>
+  <div class="row ">
+    <div class="col d-flex align-items-center justify-content-center">
+      <div class="sample-container">
+          <canvas id="samplePattern" width="8" height="8" style="position:absolute; top: 50%; left: 50%; transform:translate(-50%, -50%); width:80px; height:80px; image-rendering: pixelated;"></canvas>
+      </div>
+    </div>
   </div>
-  <button id="clear" style="padding: 10px 0;"> Clear </button>
+  <div class="row d-flex align-items-center justify-content-center">
+  <button id="clear" class="col-xs-1" style="padding: 10px 0;"> Clear </button>
+  </div>
 
   <h2>Options</h2>
-  <form>
+  <form class ="d-flex align-items-center justify-content-center">
       <div class="field option">
           <label for="sampleWidth">Sample width</label>
           <input type="range" id="sampleWidth" min="4" max="24" step="1" value="8" />
