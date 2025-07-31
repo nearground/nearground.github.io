@@ -8,7 +8,7 @@ category: fun
 giscus_comments: false
 ---
 
-Ported from kchapelier
+Adapted from [kchapelier's website](https://www.kchapelier.com/convchain-gpu-demo/continuous-example.html) to work with this site.
 
 <div class="left-panel">
   <h1 clas="row d-flex align-items-center justify-content-center">ConvChain GPU example</h1>
