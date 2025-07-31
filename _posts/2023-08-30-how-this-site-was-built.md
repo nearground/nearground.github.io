@@ -78,7 +78,6 @@ collections:
   create: true # Allow users to create new documents in this collection
   slug: "{{year}}-{{month}}-{{day}}-{{slug}}" # Filename template, e.g., YYYY-MM-DD-title.md
   fields: # The fields for each document, usually in front matter
-
   - {label: "Layout", name: "layout", widget: "hidden", default: "post"}
   - {label: "Comments", name: "gisqus_comments", widget: "hidden", default: "true"}
   - {label: "Title", name: "title", widget: "string"}

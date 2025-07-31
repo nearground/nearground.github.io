@@ -2,10 +2,11 @@
 layout: page
 title: projects
 permalink: /projects/
-description: A growing collection of your cool projects.
+description: An unassorted collection of forays into procgen, ML, and other things.
 nav: true
 nav_order: 4
-display_categories: [work, fun]
+display_categories: [fun, work]
+enable_project_categories: false
 horizontal: false
 ---
 
