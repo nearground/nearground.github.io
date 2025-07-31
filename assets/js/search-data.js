@@ -30,6 +30,13 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/cv/";
           },
+        },{id: "nav-projects",
+          title: "projects",
+          description: "An unassorted collection of forays into procgen, ML, and other things.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/projects/";
+          },
         },{id: "nav-repositories",
           title: "Repositories",
           description: "A short curated list of my current work",
@@ -234,6 +241,11 @@ ninja.data = [{
           description: "",
           section: "News",handler: () => {
               window.location.href = "/news/2025-07-25-open-for-work/";
+            },},{id: "projects-an-introduction-to-convchains",
+          title: 'An introduction to ConvChains',
+          description: "A browser version of kchapelier&#39;s convchain-gpu",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/convchains/";
             },},{
         id: 'social-email',
         title: 'email',
