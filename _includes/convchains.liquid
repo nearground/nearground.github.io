@@ -1,0 +1,38 @@
+<div class="left-panel col-sm-4">
+  <h1>ConvChain GPU example</h1>
+
+  <h2>Sample pattern <button id="clear">Clear</button></h2>
+  <div style="position:relative; width: 240px; height:240px; background-color:rgba(0, 0, 0, 0.15);">
+      <canvas id="samplePattern" width="8" height="8" style="position:absolute; top: 50%; left: 50%; transform:translate(-50%, -50%); width:80px; height:80px; image-rendering: pixelated;"></canvas>
+  </div>
+
+  <h2>Options</h2>
+  <form>
+      <div class="field option">
+          <label for="sampleWidth">Sample width</label>
+          <input type="range" id="sampleWidth" min="4" max="24" step="1" value="8" />
+          <span class="value">8</span>
+      </div>
+      <div class="field option">
+          <label for="sampleHeight">Sample height</label>
+          <input type="range" id="sampleHeight" min="4" max="24" step="1" value="8" />
+          <span class="value">8</span>
+      </div>
+      <div class="field option">
+          <label for="receptorSize">Receptor size (n)</label>
+          <input type="range" id="receptorSize" min="2" max="4" step="1" value="3" />
+          <span class="value">3</span>
+      </div>
+      <div class="field option">
+          <label for="temperature">Temperature</label>
+          <input type="range" id="temperature" min="0" max="0.5" value="0.01" step="0.001" />
+          <span class="value">0.01</span>
+      </div>
+  </form>
+</div>
+<div class="right-panel col-sm-4">
+  <h2>Generated patterns (iteration #<span id="iteration">0 + 0000</span> changes)</h2>
+  <div class="buttons">
+    <h2><button id="play">Start</button> <button id="next">Next</button> <button id="reset">Reset</button></h2>
+  </div>
+</div>
