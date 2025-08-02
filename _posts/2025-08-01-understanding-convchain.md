@@ -38,11 +38,7 @@ _ConvChain is a Markov chain of images that converges to input-like images. That
 
 At its core, the ConvChain algorithm is itself an implementation of the Metropolis-Hastings algorithm.
 
-Maxim Gumin describes his own algorithm as
-
-> A markov chain of images that converges to input-like images. That is, the distribution of patterns of size N\*N in the outputs converges to the distribution of patterns of size N\*N in the input as the process goes on. This is because by definition, a MCMC should be a _reversible_ process, through which the input can be inferred from the output.
-
-Credit goes to for designing the algorithm and writing it in C# and to [Kevin Chapelier](https://github.com/kchapelier) for porting it to javascript. I have made very minimal changes to the algorithm, mainly in how arrays are sorted, as I _think_ there was a mistake in how it's implemented. It doesn't actually seem to impact accuracy all that much, though, but I thought I'd leave the changes there.
+The interactive version that I added to the bottom of the page was ported to javascript and optimized with WebGL by [Kevin Chapelier](https://github.com/kchapelier). I have made very minimal changes to the algorithm, mainly in how arrays are sorted, as I _think_ there was a mistake in how it's implemented. It doesn't actually seem to impact accuracy all that much, though, but I thought I'd leave the changes there.
 
 ### The Metropolis-Hastings Algorithm
 
@@ -67,9 +63,6 @@ Let's dive into the code.
 
 ## Step 0: The Beginning
 
-This is the beginning of the main function. We have a boolean 2D array called `sample`, the size `N` of the patterns that we will extract from the input image, the `temperature` parameter that affects how frequently a given pixel flips between 0 and 1, the `size` of our output image, and the number of `iterations` the algorithm will run for.
-Internally, it uses an array named `field` that will becomet the final output, and `weights`, where we will count the amount of times each pattern appears in our input and thus its probability distribution.
-
 ```c#
 static bool[,] ConvChain(bool[,] sample, int N, double temperature, int size, int iterations)
 {
@@ -78,13 +71,16 @@ static bool[,] ConvChain(bool[,] sample, int N, double temperature, int size, in
   Random random = new Random(); //the magical hat where we draw numbers from
 ```
 
+This is the beginning of the main function. We have a boolean 2D array called `sample`, the size `N` of the patterns that we will extract from the input image, the `temperature` parameter that affects how frequently a given pixel flips between 0 and 1, the `size` of our output image, and the number of `iterations` the algorithm will run for.
+Internally, it uses an array named `field` that will become the final output, and `weights`, where we will count the amount of times each pattern appears in our input and thus its probability distribution. It then will return a 2D array (`bool[,]`).
+
 ### T is for Temperature
 
 Temperature is a variable that we can tweak so that we can directly adjust the probability of a pixel being replaced by a new value. It changes the probability distribution of the state S to `p(S) ~ exp(-E(S)/T)`
 
 ### Why 1 << (N \* N)?
 
-The expression means "bitwise shift the number 1 to the left N\*N times".
+The expression means "bitwise shift left the number 1 to the left N\*N times".
 Bitwise shifting left means converting the number to binary, adding zeroes to the right of it and computing the end result. 1, in binary, is 2 to the power of zero, (_rock fact: that's why programmers count from zero_) and each zero you tack on to the right adds a power to that 2. So, the code reads "weights is an array of size 2^n\*n" in common parlance, but really we're working with bits here:
 
 Consider an n-sized binary array. It has n\*n elements, each 0 or 1. All the combinations possible for the array can fit a binary number with n\*n zeros to the right of it, e.g. b10000 for n = 2, or 2^(2\*2)=16 in decimal, thus 1 << N\*N.
@@ -93,8 +89,6 @@ We will use `weight` to count how often often each pattern shows up.
 ## Step 1: Read the input image and count NxN patterns.
 
 #### ...And also augment pattern data with rotations and reflections:
-
-We iterate over each pixel in the input, read N pixels ahead and above to make an NxN array (the algorithm wraps around the image if there aren't enough pixels), rotate four times and get the mirror of each pattern (thus getting eight patterns total per pixel).
 
 ```c#
 //for each point in the input, get eight patterns
@@ -117,9 +111,11 @@ for (int y = 0; y < sample.GetLength(1); y++) for (int x = 0; x < sample.GetLeng
     // It's my intuition that at the end of the day they all get the same amount of counts.
     for (int k = 0; k < 8; k++) weights[p[k].Index()] += 1;
   }
-//using 0.1 instead of 0 makes the math easier *whoosh*.
+//using 0.1 instead of 0 makes it so that an energy state is never 0 *whoosh*.
 for (int k = 0; k < weights.Length; k++) if (weights[k] <= 0) weights[k] = 0.1;
 ```
+
+We iterate over each pixel in the input, read N pixels ahead and above to make an NxN array (the algorithm wraps around the image if there aren't enough pixels), rotate four times and get the mirror of each pattern (thus getting eight patterns total per pixel). For each pattern created this way, we compute its index in the weights array and increase its count by 1. Finally, all the patterns that weren't found in this way are set to 0.1 from 0, because we'll be computing energy states by multiplying counts together and they can't be non-zero (this will make sense later). The index function is interesting, so I'll explain that as well:
 
 ### The Index method
 
@@ -157,7 +153,7 @@ The Metropolis step refers to the Metropolis-Hastings algorithm for getting a ra
 
 > _First a new sample is proposed based on the previous sample, then the proposed sample is either added to the sequence or rejected depending on the value of the probability distribution at that point. The resulting sequence can be used to approximate the distribution (e.g. to generate a histogram) or to compute an integral (e.g. an expected value)._
 
-In his code it looks like this:
+In the code it looks like this:
 
 ```c#
 void metropolis(int i, int j)
@@ -178,7 +174,7 @@ ExUtumno introduces the energy function as `E(S) := - sum over all patterns P in
 
 ### The Log-Normal Distribution
 
-> A log-normal process is the statistical realization of the multiplicative product of many independent random variables, each of which is positive. This is justified by considering the central limit theorem in the log domain (sometimes called Gibrat's law). [The log-normal distribution](https://en.wikipedia.org/wiki/Log-normal_distribution) is the maximum entropy probability distribution for a random variate X—for which the mean and variance of ln X are specified.
+> A log-normal process is the statistical realization of the _multiplicative product_ of many independent random variables, each of which is positive. This is justified by considering the central limit theorem in the log domain (sometimes called Gibrat's law). [The log-normal distribution](https://en.wikipedia.org/wiki/Log-normal_distribution) is the maximum entropy probability distribution for a random variate X—for which the mean and variance of ln X are specified.
 
 Anyway, here's the energy function. Hold out your hand, it's quite cool:
 
@@ -194,7 +190,7 @@ double energyExp(int i, int j)
 ```
 
 Wow. The math checks out. It's got _logs_. It's got _multiplications_. It's got _entropy_.
-
+Remember how there's no weights of 0 in the array? That's because we should be dealing with exponents of logarithmic probability functions. These are always positive and non-zero, however small.
 So if E and E' are sums of logs probability densities... By _Log Magic_ the exponent of E'-E becomes q/p. Maybe the negative signs all cancel each other out. Maybe the probability of `Math.Pow(q / p, 1.0 / temperature) < random.NextDouble()` really equals `exp(-(E'-E)/T)`. Maybe, _just maybe_, all is right in the world.
 
 ```c#
@@ -211,7 +207,8 @@ So that explains the Metropolis algorithm implementation. We can now return our 
 return field;
 ```
 
-Don't forget to like and subscribe !
+_Don't forget to like and subscribe!_ Oh, and don't forget to check out this interactive version (shoutout again to K. Chapelier).
+
 ┳━┳ ヽ(ಠل͜ಠ)ノ
 
 <div class ="convchain-example row">
