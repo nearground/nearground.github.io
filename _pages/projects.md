@@ -3,7 +3,7 @@ layout: page
 title: projects
 permalink: /projects/
 description: An unassorted collection of forays into procgen, ML, and other things.
-nav: true
+nav: false
 nav_order: 4
 display_categories: [fun, work]
 enable_project_categories: false

@@ -1,16 +1,223 @@
 ---
-layout: page
-title: An introduction to ConvChains
-description: A browser version of kchapelier's convchain-gpu
-img: assets/img/convchain/convchain.gif
-importance: 1
-category: fun
-giscus_comments: false
+layout: post
+gisqus_comments: "true"
+title: Understanding ConvChain
+date: 2025-08-01T17:51:00.000-07:00
+description: A not-so-gentle introduction to programming procedural generation with an interactive demo
+tags: software-dev procgen
+categories: personal-site
+related_posts: "true"
+thumbnail: assets/img/convchain/convchain.gif
+toc:
+  sidebar: "left"
 ---
 
-Adapted from [kchapelier's website](https://www.kchapelier.com/convchain-gpu-demo/continuous-example.html) to work with this site.
+I'd always wanted to know how videogame designers often make infinite worlds for players to explore, or how rogue-like games such as Diablo create levels.
 
-<div class="left-panel">
+<div class="row mt-3 mt-md-0">
+    {% include figure.liquid path="assets/img/d2-map.jpg.jpg" title="The den of evil!" class="img-fluid rounded z-depth-1" %}
+</div>
+<div class="caption">
+A core memory of my childhood: Diablo II
+</div>
+
+The technique for creating random patterns is called procedural generation, and my first real introduction to it came, thanks to reddit, through a technique called [Wave Function Collapse](https://github.com/mxgmn/WaveFunctionCollapse), created by Maxim Gumin.
+
+<div class="row mt-3 mt-md-0">
+    {% include figure.liquid path="assets/img/wfc.png" title="The wave function collapse algorithm" class="img-fluid rounded z-depth-1" %}
+</div>
+<div class="caption">
+The Wave Function Collapse Algorithm.
+</div>
+
+The algorithm seemed quite simple and I will make its own post soon, however I just couldn't wrap my head around the implementation. I decided to start with an earlier algorithm of Gumin's called [ConvChain](https://github.com/mxgmn/ConvChain).
+
+## The ConvChain algorithm
+
+_ConvChain is a Markov chain of images that converges to input-like images. That is, the distribution of NxN patterns in the outputs converges to the distribution of NxN patterns in the input as the process goes on._
+
+At its core, the ConvChain algorithm is itself an implementation of the Metropolis-Hastings algorithm.
+
+Maxim Gumin describes his own algorithm as
+
+> A markov chain of images that converges to input-like images. That is, the distribution of patterns of size N\*N in the outputs converges to the distribution of patterns of size N\*N in the input as the process goes on. This is because by definition, a MCMC should be a _reversible_ process, through which the input can be inferred from the output.
+
+Credit goes to for designing the algorithm and writing it in C# and to (Kevin Chapelier)[https://github.com/kchapelier] for porting it to javascript. I have made very minimal changes to the algorithm, mainly in how arrays are sorted, as I _think_ there was a mistake in how it's implemented. It doesn't actually seem to impact accuracy all that much, though, but I thought I'd leave the changes there.
+
+### The Metropolis-Hastings Algorithm
+
+> [Wikipedia](https://en.wikipedia.org/wiki/Metropolis%E2%80%93Hastings_algorithm): a Markov chain Monte Carlo (MCMC) method for obtaining a sequence of random samples from a probability distribution from which direct sampling is difficult. New samples are added to the sequence in two steps: first a new sample is proposed based on the previous sample, then the proposed sample is either added to the sequence or rejected depending on the value of the probability distribution at that point.
+
+> The Metropolis–Hastings algorithm generates a sequence of sample values in such a way that, as more and more sample values are produced, the distribution of values more closely approximates the desired distribution. These sample values are produced iteratively in such a way, that the distribution of the next sample depends only on the current sample value, which makes the sequence of samples a Markov chain.
+
+> [Monte Carlo methods](https://en.wikipedia.org/wiki/Monte_Carlo_method), or Monte Carlo experiments, are a broad class of computational algorithms that rely on repeated random sampling to obtain numerical results. What makes Metropolis a Markov Chain Monte Carlo is that the probability distribution is approximated through random sampling and rejection of proposals based also on random variations.
+
+The crux of the algorithm goes like this:
+
+1. Read the input image and count NxN patterns.
+   (optional) Augment pattern data with rotations and reflections.
+2. Initialize the image (for example, with independent random values) in some state S0.
+3. Repeat the Metropolis step:
+   Compute the energy E of the current state S.
+   Choose a random pixel and change its value. Let's call the resulting state S'.
+   Compute the energy E' of the state S'.
+   Compare E' to E. If E' < E assign the current state to be E'. Otherwise, assign the current state to be E' with probability `exp(-(E'-E)/T)`.
+
+S is the current state of any pixel. In his implementation, pixels can be either white or black (0, or 1). Energy is computed via an equation that I will describe later. T stands for temperature, a parameter that can be tweaked to determine how often a value can flip between 0 and 1.
+
+Let's dive into the code.
+
+## Step 0: The Beginning
+
+This is the beginning of the main function. We have a boolean 2D array called `sample`, the size `N` of the patterns that we will extract from the input image, the `temperature` parameter that affects how frequently a given pixel flips between 0 and 1, the `size` of our output image, and the number of `iterations` the algorithm will run for.
+Internally, it uses an array named `field` that will becomet the final output, and `weights`, where we will count the amount of times each pattern appears in our input and thus its probability distribution.
+
+```c#
+static bool[,] ConvChain(bool[,] sample, int N, double temperature, int size, int iterations)
+{
+  bool[,] field = new bool[size, size]; // the array of our final output
+  double[] weights = new double[1 << (N * N)]; //This is where we will store the count of each pattern.
+  Random random = new Random(); //the magical hat where we draw numbers from
+```
+
+### T is for Temperature
+
+Temperature is a variable that we can tweak so that we can directly adjust the probability of a pixel being replaced by a new value. It changes the probability distribution of the state S to `p(S) ~ exp(-E(S)/T)`
+
+### Why 1 << (N \* N)?
+
+The expression means "bitwise shift the number 1 to the left N\*N times".
+Bitwise shifting left means converting the number to binary, adding zeroes to the right of it and computing the end result. 1, in binary, is 2 to the power of zero, (_rock fact: that's why programmers count from zero_) and each zero you tack on to the right adds a power to that 2. So, the code reads "weights is an array of size 2^n\*n" in common parlance, but really we're working with bits here:
+
+Consider an n-sized binary array. It has n\*n elements, each 0 or 1. All the combinations possible for the array can fit a binary number with n\*n zeros to the right of it, e.g. b10000 for n = 2, or 2^(2\*2)=16 in decimal, thus 1 << N\*N.
+We will use `weight` to count how often often each pattern shows up.
+
+## Step 1: Read the input image and count NxN patterns.
+
+#### ...And also augment pattern data with rotations and reflections:
+
+We iterate over each pixel in the input, read N pixels ahead and above to make an NxN array (the algorithm wraps around the image if there aren't enough pixels), rotate four times and get the mirror of each pattern (thus getting eight patterns total per pixel).
+
+```c#
+//for each point in the input, get eight patterns
+for (int y = 0; y < sample.GetLength(1); y++) for (int x = 0; x < sample.GetLength(0); x++)
+  {
+    //The array of Patterns where we'll store them
+    Pattern[] p = new Pattern[8];
+    //Get the eight patterns mentioned before.
+    //No special logic here except for the custom class Pattern which I'll hand-wave away *whoosh*.
+    //Just take it as the pattern of size N that starts at coords (x,y) in the sample array.
+    p[0] = new Pattern(sample, x, y, N);
+    p[1] = p[0].Rotated();
+    p[2] = p[1].Rotated();
+    p[3] = p[2].Rotated();
+    p[4] = p[0].Reflected();
+    p[5] = p[1].Reflected();
+    p[6] = p[2].Reflected();
+    p[7] = p[3].Reflected();
+    // each transformation of the pattern gets its own count.
+    // It's my intuition that at the end of the day they all get the same amount of counts.
+    for (int k = 0; k < 8; k++) weights[p[k].Index()] += 1;
+  }
+//using 0.1 instead of 0 makes the math easier *whoosh*.
+for (int k = 0; k < weights.Length; k++) if (weights[k] <= 0) weights[k] = 0.1;
+```
+
+### The Index method
+
+```c#
+	public int Index()
+	{
+		int result = 0;
+    ///Size() is just the size of the input array
+		for (int y = 0; y < Size(); y++) for (int x = 0; x < Size(); x++) result += data[x, y] ? 1 << (y * Size() + x) : 0;
+		return result;
+	}
+```
+
+Remember how we calculated the weights array size with bitwise shifting? This method uses the same technique to turn the binary array into a number. Another way to do this would be to just concatenate them as strings, casting them to binary, then to decimal.
+
+## Step 2: Initialize the image with independent random values.
+
+This one is trivial: Just fill the array randomly with 1's and 0's.
+
+```c#
+for (int y = 0; y < size; y++) for (int x = 0; x < size; x++) field[x, y] = random.Next(2) == 1;
+```
+
+## Step 3: Repeat the Metropolis step
+
+Initialize the metropolis algorithm in a random pixel, and run it enough times so that approximately every pixel in a square image of size `size` gets iterated on `iterations` times.
+
+```c#
+for (int k = 0; k < iterations * size * size; k++) metropolis(random.Next(size), random.Next(size));
+```
+
+### The Metropolis-Hastings algorithm
+
+The Metropolis step refers to the Metropolis-Hastings algorithm for getting a random sample out of a probability distribution. From (Wikipedia):
+
+> _First a new sample is proposed based on the previous sample, then the proposed sample is either added to the sequence or rejected depending on the value of the probability distribution at that point. The resulting sequence can be used to approximate the distribution (e.g. to generate a histogram) or to compute an integral (e.g. an expected value)._
+
+In his code it looks like this:
+
+```c#
+void metropolis(int i, int j)
+{
+  double p = energyExp(i, j); //Calculate the energy state of the given pixel at i,j. This is E in the original description
+  field[i, j] = !field[i, j]; //flip the bit at i,j
+  double q = energyExp(i, j); // Re-calculate the energy state of the now-switched pixel at i,j. This is E' in the original description
+  //If q > p, keep the changes, otherwise randomly revert the changes with P = exp(-(E'-E)/T)
+  if (Math.Pow(q / p, 1.0 / temperature) < random.NextDouble()) field[i, j] = !field[i, j];
+};
+```
+
+If E' is greater than E (q>p), then `q / p >= random.Nextdouble()` thus we keep that bit flipped (assuming temperature is less than 1). Otherwise, flip it back with a certain random chance. Does it actually match the probability distribution `exp(-(E'-E)/T)`? Let's try to figure it out:
+
+### E is for energy
+
+ExUtumno introduces the energy function as `E(S) := - sum over all patterns P in S of log(weight(P))` because in the metropolis part of his algorithm he uses `exp(-(E'-E)/T)`. Remember our weight array and how it was used for storing pattern counts? Turns out we will actually interpret said pattern counts as their log or something. I haven't done this kind of math in a while, so I'm still iffy on this part. I might update once I figure it out. Meanwhile, check out a closely-related algorithm:
+
+### The Log-Normal Distribution
+
+> A log-normal process is the statistical realization of the multiplicative product of many independent random variables, each of which is positive. This is justified by considering the central limit theorem in the log domain (sometimes called Gibrat's law). [The log-normal distribution](https://en.wikipedia.org/wiki/Log-normal_distribution) is the maximum entropy probability distribution for a random variate X—for which the mean and variance of ln X are specified.
+
+Anyway, here's the energy function. Hold out your hand, it's quite cool:
+
+```c#
+double energyExp(int i, int j)
+{
+  double value = 1.0;
+  for (int y = j - N + 1; y <= j + N - 1; y++) \
+    for (int x = i - N + 1; x <= i + N - 1; x++) \
+      value *= weights[new Pattern(field, x, y, N).Index()];
+  return value;
+};
+```
+
+Wow. The math checks out. It's got _logs_. It's got _multiplications_. It's got _entropy_.
+
+So if E and E' are sums of logs probability densities... By _Log Magic_ the exponent of E'-E becomes q/p. Maybe the negative signs all cancel each other out. Maybe the probability of `Math.Pow(q / p, 1.0 / temperature) < random.NextDouble()` really equals `exp(-(E'-E)/T)`. Maybe, _just maybe_, all is right in the world.
+
+```c#
+  //If q > p, keep the changes, otherwise randomly revert the changes with P = exp(-(E'-E)/T)
+  if (Math.Pow(q / p, 1.0 / temperature) < random.NextDouble()) field[i, j] = !field[i, j];
+```
+
+So that explains the Metropolis algorithm implementation. We can now return our output image and call it a day
+
+## Finally
+
+```c#
+//the end result
+return field;
+```
+
+Don't forget to like and subscribe !
+┳━┳ ヽ(ಠل͜ಠ)ノ
+
+<div class ="convchain-example row">
+<div class="left-panel col-sm">
   <h1 clas="row d-flex align-items-center justify-content-center">ConvChain GPU example</h1>
 
   <h2 class="row d-flex align-items-center justify-content-center">Sample pattern</h2>
@@ -49,12 +256,13 @@ Adapted from [kchapelier's website](https://www.kchapelier.com/convchain-gpu-dem
       </div>
   </form>
 </div>
-<div class="right-panel">
-  <h2>Generated patterns (iteration #<span id="iteration">0 + 0000</span> changes)</h2>
+<div class="right-panel col-sm">
+  <h2>Generated patterns </h2> 
+  (iteration #<span id="iteration">0 + 0000</span> changes)
   <div class="buttons">
-    <h2><button id="play">Start</button> <button id="next">Next</button> <button id="reset">Reset</button></h2>
+    <button id="play">Start</button> <button id="next">Next</button> <button id="reset">Reset</button>
   </div>
-  <div class="convchain-canvas row"></div>
+  <div class="convchain-canvas"></div>
 
 </div>
 
@@ -212,12 +420,13 @@ ConvChainGPU.prototype.setSample = function (sample, sampleSize) {
 };
 
 function processWeights (context, sample, sampleWidth, sampleHeight, n) {
-  const count = (1 << (n * n));
+  const count = (1 << (n * n)); //equivalent to 2^n^n.
   const width = Math.min(1024, count);
-  const height = Math.max(1, count / width);
+  const height = Math.max(1, count / width); 
+
   const weights = new Float32Array(4 * width * height);
 
-  function pattern (fn) {
+  function pattern (fn) { //utility function for rotation, reflection, etc
     const result = new Array(n * n);
 
     for (let y = 0; y < n; y++) {
@@ -251,7 +460,7 @@ function processWeights (context, sample, sampleWidth, sampleHeight, n) {
 
   for (let y = 0; y < sampleHeight; y++) {
     for (let x = 0; x < sampleWidth; x++) {
-      const p0 = pattern(function (dx, dy) { return sample[((x + dx) % sampleWidth) + ((y + dy) % sampleHeight) * sampleWidth]; });
+      const p0 = pattern(function (dx, dy) { return sample[((x + dx) % sampleWidth) + ((y + dy) % sampleHeight) * sampleHeight]; });
       const p1 = rotate(p0);
       const p2 = rotate(p1);
       const p3 = rotate(p2);
