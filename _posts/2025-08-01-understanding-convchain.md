@@ -21,13 +21,13 @@ I'd always wanted to know how videogame designers often make infinite worlds for
 A core memory of my childhood: Diablo II
 </div>
 
-The technique for creating random patterns is called procedural generation, and my first real introduction to it came, thanks to reddit, through a technique called [Wave Function Collapse](https://github.com/mxgmn/WaveFunctionCollapse), created by Maxim Gumin.
+The technique for creating random patterns is called procedural generation, and my first real introduction to it came, thanks to reddit, through a technique called [Wave Function Collapse](https://github.com/mxgmn/WaveFunctionCollapse), created by Maxim Gumin in like 2016.
 
 <div class="row mt-3 mt-md-0">
     {% include figure.liquid path="assets/img/wfc.png" title="The wave function collapse algorithm" class="img-fluid rounded z-depth-1" %}
 </div>
 <div class="caption">
-The Wave Function Collapse Algorithm.
+The Wave Function Collapse algorithm takes in a sample image, extracts patterns out of it, defines adjacency rules for them, and recreates an image using said patterns and adjacencies.
 </div>
 
 The algorithm seemed quite simple and I will make its own post soon, however I just couldn't wrap my head around the implementation. I decided to start with an earlier algorithm of Gumin's called [ConvChain](https://github.com/mxgmn/ConvChain).
@@ -42,15 +42,13 @@ Maxim Gumin describes his own algorithm as
 
 > A markov chain of images that converges to input-like images. That is, the distribution of patterns of size N\*N in the outputs converges to the distribution of patterns of size N\*N in the input as the process goes on. This is because by definition, a MCMC should be a _reversible_ process, through which the input can be inferred from the output.
 
-Credit goes to for designing the algorithm and writing it in C# and to (Kevin Chapelier)[https://github.com/kchapelier] for porting it to javascript. I have made very minimal changes to the algorithm, mainly in how arrays are sorted, as I _think_ there was a mistake in how it's implemented. It doesn't actually seem to impact accuracy all that much, though, but I thought I'd leave the changes there.
+Credit goes to for designing the algorithm and writing it in C# and to [Kevin Chapelier](https://github.com/kchapelier) for porting it to javascript. I have made very minimal changes to the algorithm, mainly in how arrays are sorted, as I _think_ there was a mistake in how it's implemented. It doesn't actually seem to impact accuracy all that much, though, but I thought I'd leave the changes there.
 
 ### The Metropolis-Hastings Algorithm
 
 > [Wikipedia](https://en.wikipedia.org/wiki/Metropolis%E2%80%93Hastings_algorithm): a Markov chain Monte Carlo (MCMC) method for obtaining a sequence of random samples from a probability distribution from which direct sampling is difficult. New samples are added to the sequence in two steps: first a new sample is proposed based on the previous sample, then the proposed sample is either added to the sequence or rejected depending on the value of the probability distribution at that point.
 
 > The Metropolis–Hastings algorithm generates a sequence of sample values in such a way that, as more and more sample values are produced, the distribution of values more closely approximates the desired distribution. These sample values are produced iteratively in such a way, that the distribution of the next sample depends only on the current sample value, which makes the sequence of samples a Markov chain.
-
-> [Monte Carlo methods](https://en.wikipedia.org/wiki/Monte_Carlo_method), or Monte Carlo experiments, are a broad class of computational algorithms that rely on repeated random sampling to obtain numerical results. What makes Metropolis a Markov Chain Monte Carlo is that the probability distribution is approximated through random sampling and rejection of proposals based also on random variations.
 
 The crux of the algorithm goes like this:
 
