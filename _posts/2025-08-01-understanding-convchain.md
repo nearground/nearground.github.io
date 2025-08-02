@@ -14,8 +14,8 @@ toc:
 
 I'd always wanted to know how videogame designers often make infinite worlds for players to explore, or how rogue-like games such as Diablo create levels.
 
-<div class="row mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/d2-map.jpg.jpg" title="The den of evil!" class="img-fluid rounded z-depth-1" %}
+<div class="row mt-3 mt-md-0 rounded mx-auto d-block">
+  {% include figure.liquid path="assets/img/d2-map.jpg.jpg" title="The den of evil!" class="img-fluid rounded z-depth-1" %}
 </div>
 <div class="caption">
 A core memory of my childhood: Diablo II
@@ -23,8 +23,8 @@ A core memory of my childhood: Diablo II
 
 The technique for creating random patterns is called procedural generation, and my first real introduction to it came, thanks to reddit, through a technique called [Wave Function Collapse](https://github.com/mxgmn/WaveFunctionCollapse), created by Maxim Gumin in like 2016.
 
-<div class="row mt-3 mt-md-0">
-    {% include figure.liquid path="assets/img/wfc.png" title="The wave function collapse algorithm" class="img-fluid rounded z-depth-1" %}
+<div class="row mt-3 mt-md-0 rounded mx-auto d-block">
+  {% include figure.liquid path="assets/img/wfc.png" title="The wave function collapse algorithm" class="img-fluid rounded z-depth-1" %}
 </div>
 <div class="caption">
 The Wave Function Collapse algorithm takes in a sample image, extracts patterns out of it, defines adjacency rules for them, and recreates an image using said patterns and adjacencies.
