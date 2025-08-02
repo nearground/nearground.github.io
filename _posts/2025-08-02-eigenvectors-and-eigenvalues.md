@@ -30,13 +30,14 @@ From  [Fritz' Blog](https://fritz.ai/demystifying-principal-component-analysis-h
 
 They also lay out the steps for performing PCA.
 
-1. Standardize (or normalize) the data: By default, this is the machine learning engineer’s responsibility.
+1. Standardize (or normalize) the data: involves usually applying a mask to the image. A mask is simply filtering out all the outliers in the dataset i.e. shiny things, scribbles on the image, calibration strips, etc. This is up to the expertise of the researcher/engineer.
 2. Calculate the covariance matrix from this standardized data (with dimension d).
 3. Obtain the Eigenvectors and Eigenvalues from the newly-calculated covariance matrix.
 4. Sort the Eigenvalues in descending order, and choose the 𝑘 Eigenvectors that correspond to the 𝑘 largest Eigenvalues — where 𝑘 is the number of dimensions in the new feature subspace (𝑘≤𝑑).
 5. Construct the projection matrix 𝑊 from the 𝑘 selected Eigenvectors.
 6. Transform the original dataset 𝑋 by simple multiplication in 𝑊 to obtain a 𝑘-dimensional feature subspace 𝑌.
+7. (optional) Calculate the explained variance: how much variance is captured by the PCA algorithm. Higher value = better.
 
 PCA has its own limitations. Mainly, that it doesn't work so well with non-linear correlations. Luckily, you can always apply your own kernel methods for translating polynomial relationships down to linear problems, but that's a horror story for another time.
 
-In the meantime, stay tuned for a manual implementation of PCA.
+I'll lay out the rest of the steps soon in a new post on how to implement PCA from scratch.
