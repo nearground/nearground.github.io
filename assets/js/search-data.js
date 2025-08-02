@@ -30,13 +30,6 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/cv/";
           },
-        },{id: "nav-projects",
-          title: "projects",
-          description: "An unassorted collection of forays into procgen, ML, and other things.",
-          section: "Navigation",
-          handler: () => {
-            window.location.href = "/projects/";
-          },
         },{id: "nav-repositories",
           title: "Repositories",
           description: "A short curated list of my current work",
@@ -44,7 +37,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/repositories/";
           },
-        },{id: "post-my-site-is-up-and-running-again",
+        },{id: "post-understanding-convchain",
+        
+          title: "Understanding ConvChain",
+        
+        description: "A not-so-gentle introduction to programming procedural generation with an interactive demo",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2025/understanding-convchain/";
+          
+        },
+      },{id: "post-my-site-is-up-and-running-again",
         
           title: "My Site is Up and Running again",
         
@@ -241,11 +245,6 @@ ninja.data = [{
           description: "",
           section: "News",handler: () => {
               window.location.href = "/news/2025-07-25-open-for-work/";
-            },},{id: "projects-an-introduction-to-convchains",
-          title: 'An introduction to ConvChains',
-          description: "A browser version of kchapelier&#39;s convchain-gpu",
-          section: "Projects",handler: () => {
-              window.location.href = "/projects/convchains/";
             },},{
         id: 'social-email',
         title: 'email',
