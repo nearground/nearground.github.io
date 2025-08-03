@@ -37,7 +37,18 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/repositories/";
           },
-        },{id: "post-understanding-convchain",
+        },{id: "post-eigenvectors-and-eigenvalues",
+        
+          title: "Eigenvectors and Eigenvalues",
+        
+        description: "Part 1 of a series on chemometrics",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2025/eigenvectors-and-eigenvalues/";
+          
+        },
+      },{id: "post-understanding-convchain",
         
           title: "Understanding ConvChain",
         
@@ -57,17 +68,6 @@ ninja.data = [{
         handler: () => {
           
             window.location.href = "/blog/2025/my-site-is-up-and-running-again/";
-          
-        },
-      },{id: "post-eigenvectors-and-eigenvalues",
-        
-          title: "Eigenvectors and Eigenvalues",
-        
-        description: "Part 1 of a series on chemometrics",
-        section: "Posts",
-        handler: () => {
-          
-            window.location.href = "/blog/2025/eigenvectors-and-eigenvalues/";
           
         },
       },{id: "post-how-to-create-a-personal-website-and-blog-for-free",
