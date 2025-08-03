@@ -18,7 +18,7 @@ I'd always wanted to know how videogame designers often make infinite worlds for
   {% include figure.liquid path="assets/img/d2-map.jpg.jpg" title="The den of evil!" class="img-fluid rounded z-depth-1" %}
 </div>
 <div class="caption">
-A core memory of my childhood: Diablo II
+A core memory of my childhood: Navigating Diablo II's randomly-generated maps
 </div>
 
 The technique for creating random patterns is called procedural generation, and my first real introduction to it came, thanks to reddit, through a technique called [Wave Function Collapse](https://github.com/mxgmn/WaveFunctionCollapse), created by Maxim Gumin in like 2016.
@@ -166,11 +166,11 @@ void metropolis(int i, int j)
 };
 ```
 
-If E' is greater than E (q>p), then `q / p >= random.Nextdouble()` thus we keep that bit flipped (assuming temperature is less than 1). Otherwise, flip it back with a certain random chance. Does it actually match the probability distribution `exp(-(E'-E)/T)`? Let's try to figure it out:
+If E'(1/p) is smaller than E (1/q), then we keep that bit flipped (assuming temperature is less than 1). Otherwise, flip it back with probability `(q/p)^(-t)`. Let's talk more about the energy function:
 
 ### E is for energy
 
-ExUtumno introduces the energy function as `E(S) := - sum over all patterns P in S of log(weight(P))` because in the metropolis part of his algorithm he uses `exp(-(E'-E)/T)`. Remember our weight array and how it was used for storing pattern counts? Turns out we will actually interpret said pattern counts as their log or something. I haven't done this kind of math in a while, so I'm still iffy on this part. I might update once I figure it out. Meanwhile, check out a closely-related algorithm:
+ExUtumno introduces the energy function as `E(S) := - sum over all patterns P in S of log(weight(P))` because in the metropolis part of his algorithm he uses `exp(-(E'-E)/T)`. Remember our weight array and how it was used for storing pattern counts? Turns out we actually interpret pattern counts as the log of their probability weight. This describes a log-normal distribution.
 
 ### The Log-Normal Distribution
 
@@ -189,14 +189,14 @@ double energyExp(int i, int j)
 };
 ```
 
-Wow. The math checks out. It's got _logs_. It's got _multiplications_. It's got _entropy_.
-Remember how there's no weights of 0 in the array? That's because we should be dealing with exponents of logarithmic probability functions. These are always positive and non-zero, however small.
-So if E and E' are sums of logs probability densities... By _Log Magic_ the exponent of E'-E becomes q/p. Maybe the negative signs all cancel each other out. Maybe the probability of `Math.Pow(q / p, 1.0 / temperature) < random.NextDouble()` really equals `exp(-(E'-E)/T)`. Maybe, _just maybe_, all is right in the world.
+And how it's used in the metropolis algorithm:
 
 ```c#
   //If q > p, keep the changes, otherwise randomly revert the changes with P = exp(-(E'-E)/T)
   if (Math.Pow(q / p, 1.0 / temperature) < random.NextDouble()) field[i, j] = !field[i, j];
 ```
+
+Remember the energy function is the negative sum of the logs of probability weights. Via log properties, this means that the exponential of the energy function will return 1/the product of their counts. When you calculate `exp(-(E'-E)/T)` you get `(q/p)^(1/temperature)`. when q/p is greater than one and temperature is less than one, you will always keep the bit flipped i.e. move towards a lower entropy state. Otherwise, probability kicks in depending on the magnitude of difference between states, and how "hot" the model is.
 
 So that explains the Metropolis algorithm implementation. We can now return our output image and call it a day
 

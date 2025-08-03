@@ -2,31 +2,49 @@
 layout: post
 gisqus_comments: "true"
 title: Eigenvectors and Eigenvalues
-date: 2025-07-29T17:37:00.000-07:00
+date: 2025-08-02T0:37:00.000-07:00
 description: Part 1 of a series on chemometrics
 tags: linear-algebra
 categories: fun work mathematics statistics
-related_posts: "false"
+related_posts: "true"
+thumbnail: assets/img/eigenvector.jpg
 ---
+
 # Chemometrics
-In the field of chemometrics, hyperspectral cameras are used to capture a broad spectrum of wavelengths of objects of interest in order to capture variables of interest and extract features from them. Whereas a regular image has three color values for each pixel (R,G,B) a hyperspectral image may contain hundreds of variables, each representing a narrow spectral band ranging from infrared to ultraviolet. With more variables, more information. However, with more variables, there is also exponentially more complexity. This is called the *CURSE OF DIMENSIONALITY*. In order to avoid this fate, we use techniques for *dimensionality reduction*. That is, reducing the amount of variables down to just the most important ones. The techniques for achieving this fall under the umbrella of what is termed *Spectral Theory*. Spooky, but not so cursed.
+
+In the field of chemometrics, hyperspectral cameras are used to capture a broad spectrum of wavelengths of objects of interest in order to capture variables of interest and extract features from them. Whereas a regular image has three color values for each pixel (R,G,B) a hyperspectral image may contain hundreds of variables, each representing a narrow spectral band ranging from infrared to ultraviolet. With more variables, more information. However, with more variables, there is also exponentially more complexity. This is called the _CURSE OF DIMENSIONALITY_. In order to avoid this fate, we use techniques for _dimensionality reduction_. That is, reducing the amount of variables down to just the most important ones. The techniques for achieving this fall under the umbrella of what is termed _Spectral Theory_. Spooky, but not so cursed.
+
+<div class="row mt-3 mt-md-0 rounded mx-auto d-block">
+  {% include figure.liquid path="assets/img/Hyperspectral_image_data_cube.jpg" title="too many dimensions!" class="img-fluid rounded z-depth-1" %}
+</div>
+<div class="caption">
+A hyperspectral image, also called hypercube
+</div>
 
 # Spectral Theory
+
 [Wikipedia](https://en.wikipedia.org/wiki/Spectral_theory):
->In mathematics, spectral theory is an inclusive term for theories extending the eigenvector and eigenvalue theory of a single square matrix to a much broader theory of the structure of operators in a variety of mathematical spaces.
+
+> In mathematics, spectral theory is an inclusive term for theories extending the eigenvector and eigenvalue theory of a single square matrix to a much broader theory of the structure of operators in a variety of mathematical spaces.
 
 # Eigenvalues and Eigenvectors
+
 Consider an MxN matrix A of M datapoints with N variables each. The eigenvectors of the matrix describe the perpendicular directions over which the datapoints are spread out. Mathematically speaking, they are vectors such that Av = λv, where λ is their eigenvalue. The eigenvector when right-multiplying the matrix only shrinks or expands by a scalar λ, called the eigenvalue. These are incredibly useful because the higher the magnitude of λ, the more that eigenvector describes a feature of the dataset.
+
+<div class="row mt-3 mt-md-0 rounded mx-auto d-block">
+  {% include figure.liquid path="assets/img/eigenvector.jpg" title="stretched dog" class="img-fluid rounded z-depth-1" %}
+</div>
+<div class="caption">
+Woof! This doggo has been stretched!
+</div>
 
 One algorithm that leverages eigenvectors and eigenvalues for effective dimensionality reduction is called Principal Component Analysis (PCA).
 
 # Principal Component Analysis
-From  [Fritz' Blog](https://fritz.ai/demystifying-principal-component-analysis-handling-the-curse-of-dimensionality/)
->Principal component analysis (PCA) is an algorithm that uses a statistical procedure to convert a set of observations of possibly correlated variables into a set of values of linearly uncorrelated variables called principal components.
 
->This is one of the primary methods for performing dimensionality reduction — this reduction ensures that the new dimension maintains the original variance in the data as best it can.
+From [Fritz' Blog](https://fritz.ai/demystifying-principal-component-analysis-handling-the-curse-of-dimensionality/)
 
->That way we can visualize high-dimensional data in 2D or 3D, or use it in a machine learning algorithm for faster training and inference.
+> Principal component analysis (PCA) is an algorithm that uses a statistical procedure to convert a set of observations of possibly correlated variables into a set of values of linearly uncorrelated variables called principal components. \[...\] This is one of the primary methods for performing dimensionality reduction — this reduction ensures that the new dimension maintains the original variance in the data as best it can. \[...\] That way we can visualize high-dimensional data in 2D or 3D, or use it in a machine learning algorithm for faster training and inference.
 
 They also lay out the steps for performing PCA.
 
