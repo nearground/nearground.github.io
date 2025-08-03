@@ -3,22 +3,22 @@ layout: post
 gisqus_comments: "true"
 title: Eigenvectors and Eigenvalues
 date: 2025-08-02T0:37:00.000-07:00
-description: Part 1 of a series on chemometrics
+description: Building up to Principal Component Analysis
 tags: linear-algebra
 categories: fun work mathematics statistics
 related_posts: "true"
 thumbnail: assets/img/eigenvector.jpg
 ---
 
-# Chemometrics
+Statistics deals with finding order out of chaos. One field where chaos reigns and there is much more than meets the eye is the field of hyperspectral imaging in chemometrics.
 
-In the field of chemometrics, hyperspectral cameras are used to capture a broad spectrum of wavelengths of objects of interest in order to capture variables of interest and extract features from them. Whereas a regular image has three color values for each pixel (R,G,B) a hyperspectral image may contain hundreds of variables, each representing a narrow spectral band ranging from infrared to ultraviolet. With more variables, more information. However, with more variables, there is also exponentially more complexity. This is called the _CURSE OF DIMENSIONALITY_. In order to avoid this fate, we use techniques for _dimensionality reduction_. That is, reducing the amount of variables down to just the most important ones. The techniques for achieving this fall under the umbrella of what is termed _Spectral Theory_. Spooky, but not so cursed.
+In the field of chemometrics, hyperspectral cameras are sometimes used to capture a broad spectrum of wavelengths of objects of interest in order to extract features from them. Think of it as a photograph that records values from infrared up to ulraviolet. Whereas a regular image has three color values for each pixel (R,G,B) a hyperspectral image may contain hundreds of variables, each representing a narrow spectral band. With more variables, more information. However, with more variables, there is also exponentially more complexity. This is called the _CURSE OF DIMENSIONALITY_. In order to avoid this fate, we use techniques for _dimensionality reduction_. That is, reducing the amount of variables down to just the most important ones. The techniques for achieving this fall under the umbrella of what is termed _Spectral Theory_. Spooky, but not so cursed.
 
 <div class="row mt-3 mt-md-0 rounded mx-auto d-block">
   {% include figure.liquid path="assets/img/Hyperspectral_image_data_cube.jpg" title="too many dimensions!" class="img-fluid rounded z-depth-1" %}
 </div>
 <div class="caption">
-A hyperspectral image, also called hypercube
+A hyperspectral image, also called a hypercube
 </div>
 
 # Spectral Theory
@@ -29,13 +29,16 @@ A hyperspectral image, also called hypercube
 
 # Eigenvalues and Eigenvectors
 
-Consider an MxN matrix A of M datapoints with N variables each. The eigenvectors of the matrix describe the perpendicular directions over which the datapoints are spread out. Mathematically speaking, they are vectors such that Av = λv, where λ is their eigenvalue. The eigenvector when right-multiplying the matrix only shrinks or expands by a scalar λ, called the eigenvalue. These are incredibly useful because the higher the magnitude of λ, the more that eigenvector describes a feature of the dataset.
+Consider an MxN matrix A of M datapoints with N variables each. The eigenvectors of the matrix describe the perpendicular directions over which the datapoints are spread out. Mathematically speaking, they are vectors such that Av = λv, where λ is their eigenvalue. They're special vector that, when transformed by a matrix, only changes in length (gets stretched or shrunk) but not in direction. The amount by which they shrink or stretch is the eigenvalue.
+
+To find the eigenvectors of a matrix, first find the eigenvalues by solving the characteristic equation `det(A - λI) = 0`, where A is the matrix, λ is the eigenvalue, I is the identity matrix, and **0** is the zero vector.
+Knowing the eigenvalues, we then solve for `(A-λI)x=0`, where the possible solutions for the vector x are the eigenvectors.
 
 <div class="row mt-3 mt-md-0 rounded mx-auto d-block">
   {% include figure.liquid path="assets/img/eigenvector.jpg" title="stretched dog" class="img-fluid rounded z-depth-1" %}
 </div>
 <div class="caption">
-Woof! This doggo has been stretched!
+Woo-o-f!
 </div>
 
 One algorithm that leverages eigenvectors and eigenvalues for effective dimensionality reduction is called Principal Component Analysis (PCA).
