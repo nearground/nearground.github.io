@@ -7,7 +7,7 @@ description: How to build a blog on Github Pages
 giscus_comments: "true"
 related_posts: "true"
 tags: jekyll blog
-categories: personal-site
+categories: software-dev
 toc:
   sidebar: "left"
 ---

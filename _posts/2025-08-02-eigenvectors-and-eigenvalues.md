@@ -5,7 +5,7 @@ title: Eigenvectors and Eigenvalues
 date: 2025-08-02T0:37:00.000-07:00
 description: Building up to Principal Component Analysis
 tags: linear-algebra
-categories: fun work mathematics statistics
+categories: mathematics statistics
 related_posts: "true"
 thumbnail: assets/img/eigenvector.jpg
 ---
@@ -62,3 +62,4 @@ They also lay out the steps for performing PCA.
 PCA has its own limitations. Mainly, that it doesn't work so well with non-linear correlations. Luckily, you can always apply your own kernel methods for translating polynomial relationships down to linear problems, but that's a horror story for another time.
 
 I'll lay out the rest of the steps soon in a new post on how to implement PCA from scratch.
+In the meantime, check out this set of exercises on calculating eigenvalues from [Libretexts.org](<https://math.libretexts.org/Courses/Cosumnes_River_College/Math_420%3A_Differential_Equations_(Breitenbach)/11%3A_Appendices/06%3A_Eigenvalues_and_Eigenvectors/6.01%3A_Exercises_4.1>)

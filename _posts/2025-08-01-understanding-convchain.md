@@ -5,7 +5,7 @@ title: Understanding ConvChain
 date: 2025-08-01T17:51:00.000-07:00
 description: A not-so-gentle introduction to programming procedural generation with an interactive demo
 tags: software-dev procgen
-categories: personal-site
+categories: software-dev
 related_posts: "true"
 thumbnail: assets/img/convchain/convchain.gif
 toc:
