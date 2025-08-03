@@ -41,7 +41,7 @@ ninja.data = [{
         
           title: "Eigenvectors and Eigenvalues",
         
-        description: "Part 1 of a series on chemometrics",
+        description: "Building up to Principal Component Analysis",
         section: "Posts",
         handler: () => {
           
