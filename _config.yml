@@ -240,7 +240,7 @@ jekyll-minifier:
 
 terser:
   compress:
-    drop_console: true
+    drop_console: false
 
 # -----------------------------------------------------------------------------
 # Jekyll Archives
@@ -620,7 +620,18 @@ third_party_libraries:
       css: "https://cdn.jsdelivr.net/npm/venobox@{{version}}/dist/venobox.min.css"
       js: "https://cdn.jsdelivr.net/npm/venobox@{{version}}/dist/venobox.min.js"
     version: "2.1.8"
-
+  pca-js:
+    integrity:
+      js: "sha256-doQuY97wWc/bcIIkbWYTCo2DRf73MoN/Mnno/hfnq+Y="
+    url:
+      js: "https://cdn.jsdelivr.net/npm/pca-js@{{version}}/pca.min.js"
+    version: "1.0.0"
+  math:
+    integrity:
+      js: "sha256-FWbfjGElX4xucrIxagtwSvxfkAYGyfBfnbfysD/U+nQ="
+    url:
+      js: "https://cdnjs.cloudflare.com/ajax/libs/mathjs/{{version}}/math.min.js"
+    version: "14.6.0"
 # -----------------------------------------------------------------------------
 # Get external JSON data
 # -----------------------------------------------------------------------------
