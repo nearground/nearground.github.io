@@ -37,15 +37,37 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/repositories/";
           },
-        },{id: "post-eigenvectors-and-eigenvalues",
+        },{id: "post-an-interactive-3d-sample-generator",
         
-          title: "Eigenvectors and Eigenvalues",
+          title: "An Interactive 3d Sample Generator",
         
-        description: "Building up to Principal Component Analysis",
+        description: "Generating samples for statistical exercises",
         section: "Posts",
         handler: () => {
           
-            window.location.href = "/blog/2025/eigenvectors-and-eigenvalues/";
+            window.location.href = "/blog/2025/3d-samples-generator/";
+          
+        },
+      },{id: "post-the-curse-of-dimensionality",
+        
+          title: "The Curse of Dimensionality",
+        
+        description: "A browser implementation of Principal Component Analysis using pca-js",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2025/intro-to-principal-component-analysis/";
+          
+        },
+      },{id: "post-intro-to-eigenvectors",
+        
+          title: "Intro to Eigenvectors",
+        
+        description: "With an interactive app",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2025/intro-to-eigenvectors/";
           
         },
       },{id: "post-understanding-convchain",
