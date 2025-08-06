@@ -46,12 +46,12 @@ They also lay out the steps for performing PCA.
   SVD of a 2x2 matrix photo:[centerspace](https://www.centerspace.net/theoretical-motivation-behind-pcr)
 </div>
 
-
 PCA has its own limitations. Mainly, that it involves multiplying all of the samples with each other (which is _very cursed_) and it doesn't work so well with non-linear correlations. Luckily, you can always apply your own kernel methods for translating polynomial relationships down to linear problems, but that's a horror story for another time.
 There is a more general approach for dimensionality reduction which is also more computationally efficient called Singular value Decomposition, which I'll write about later.
 For a step-by-step implementation of PCA in python, check out [Nikita Kozodoi's](https://kozodoi.me/blog/20230326/pca-from-scratch).
 
 Here I'm using [bitanath's](https://github.com/bitanath/pca) javascript implementation for getting the principal components of a matrix.
+
 <div class= "row">
   <div class ="left-column col-sm">
     <label for="matrix-rows">Rows:</label>
