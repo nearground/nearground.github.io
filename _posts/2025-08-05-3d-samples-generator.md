@@ -28,14 +28,14 @@ In this example, we randomly sample from a multivariate (many-variable) normal (
       </div>
       <div class="col">
         <div class="row">
-          <input type="number" id="x-mean" value="0" style="width: 50px;">
-          <input type="number" id="y-mean" value="0" style="width: 50px;">
-          <input type="number" id="z-mean" value="0" style="width: 50px;">
+          <input type="number" id="x-mean" value="5" style="width: 50px;">
+          <input type="number" id="y-mean" value="7" style="width: 50px;">
+          <input type="number" id="z-mean" value="-5" style="width: 50px;">
         </div>
-        <input type="number" class="row" id="sample-size" min="1" value="1000" style="width: 50px">
+        <input type="number" class="row" id="sample-size" min="1" value="1000" style="width: 150px">
       </div>
     </div> 
-    <div>Covariance matrix</div>
+    <div>Covariance matrix (positive numbers only)</div>
     <table>
       <tbody id="covariance-matrix">
         <!-- Rows and cells will be dynamically generated -->

@@ -48,6 +48,75 @@ function choleskyDecomposition(covarianceMatrix) {
 // ];
 // choleskyDecomposition(matrix);
 
+function multiplyMatrices(matrixA, matrixB) {
+  // Get dimensions of the matrices
+  const rowsA = matrixA.length;
+  const colsA = matrixA[0].length;
+  const rowsB = matrixB.length;
+  const colsB = matrixB[0].length;
+
+  // Check if matrices can be multiplied
+  if (colsA !== rowsB) {
+    throw new Error("Matrices cannot be multiplied: Number of columns in the first matrix must equal the number of rows in the second matrix.");
+  }
+
+  // Initialize the result matrix with zeros
+  const resultMatrix = Array(rowsA)
+    .fill(0)
+    .map(() => Array(colsB).fill(0));
+
+  // Perform matrix multiplication
+  for (let i = 0; i < rowsA; i++) {
+    // Iterate through rows of matrixA
+    for (let j = 0; j < colsB; j++) {
+      // Iterate through columns of matrixB
+      for (let k = 0; k < colsA; k++) {
+        // Iterate through columns of matrixA (or rows of matrixB)
+        resultMatrix[i][j] += matrixA[i][k] * matrixB[k][j];
+      }
+    }
+  }
+
+  return resultMatrix;
+}
+function multiplyMatrices(matrixA, matrixB) {
+  // If matrixB is a 1D array (vector), treat as matrix-vector multiplication
+  const isBVector = !Array.isArray(matrixB[0]);
+  const rowsA = matrixA.length;
+  const colsA = matrixA[0].length;
+
+  if (isBVector) {
+    if (matrixB.length !== colsA) {
+      throw new Error("Matrix columns must match vector length.");
+    }
+    const result = [];
+    for (let i = 0; i < rowsA; i++) {
+      let sum = 0;
+      for (let j = 0; j < colsA; j++) {
+        sum += matrixA[i][j] * matrixB[j];
+      }
+      result.push(sum);
+    }
+    return result;
+  } else {
+    // Matrix-matrix multiplication
+    const rowsB = matrixB.length;
+    const colsB = matrixB[0].length;
+    if (colsA !== rowsB) {
+      throw new Error("Matrix dimensions are not compatible for multiplication.");
+    }
+    const result = Array.from({ length: rowsA }, () => Array(colsB).fill(0));
+    for (let i = 0; i < rowsA; i++) {
+      for (let j = 0; j < colsB; j++) {
+        for (let k = 0; k < colsA; k++) {
+          result[i][j] += matrixA[i][k] * matrixB[k][j];
+        }
+      }
+    }
+    return result;
+  }
+}
+
 function multiplyMatrixVector(matrix, vector) {
   const numRows = matrix.length;
   const numCols = matrix[0].length;
@@ -70,6 +139,24 @@ function multiplyMatrixVector(matrix, vector) {
 
   return resultVector;
 }
+
+function divideVectors(vectorA, vectorB) {
+  // Ensure both inputs are arrays and have the same length
+  if (!Array.isArray(vectorA) || !Array.isArray(vectorB) || vectorA.length !== vectorB.length) {
+    throw new Error("Both inputs must be arrays of the same length.");
+  }
+
+  const resultVector = [];
+  for (let i = 0; i < vectorA.length; i++) {
+    // Handle division by zero
+    if (vectorB[i] === 0) {
+      throw new Error("Division by zero encountered at index " + i);
+    }
+    resultVector.push(vectorA[i] / vectorB[i]);
+  }
+  return resultVector;
+}
+
 function icdf(x) {
   var w = -Math.log((1 - x) * (1 + x));
   var p;
@@ -108,6 +195,18 @@ function standardNormalVector(length) {
 
   return ary;
 }
+function subtractVectors(vec1, vec2) {
+  // Ensure both vectors have the same dimension
+  if (vec1.length !== vec2.length) {
+    throw new Error("Vectors must have the same dimension to be added.");
+  }
+
+  const result = [];
+  for (let i = 0; i < vec1.length; i++) {
+    result[i] = vec1[i] - vec2[i];
+  }
+  return result;
+}
 
 function addVectors(vec1, vec2) {
   // Ensure both vectors have the same dimension
@@ -121,30 +220,31 @@ function addVectors(vec1, vec2) {
   }
   return result;
 }
-
-var standardNormal = standardNormalVector(3); // compute the correlated dsitribution based on the covariance
-
-function generateSamplesCholesky(covarianceMatrix, samples, mean) {
-  var uniformPoints = [];
+function generateSamplesCholesky(covariance, samples, means, dimensions) {
+  var normalPoints = [];
   for (i = 0; i < samples; i++) {
-    uniformPoints.push(standardNormalVector(3));
+    normalPoints.push(standardNormalVector(dimensions));
   }
   var points = [];
-  var cholesky = choleskyDecomposition(covarianceMatrix);
   for (i = 0; i < samples; i++) {
-    var multivariateVector = multiplyMatrixVector(cholesky, uniformPoints[i]);
-    multivariateVector = addVectors(multivariateVector, mean);
+    var multivariateVector = multiplyMatrixVector(covariance, normalPoints[i]);
+    multivariateVector = addVectors(multivariateVector, means);
     points.push(multivariateVector);
   }
   return points;
 }
 
-function generateSamplesICDF(covarianceMatrix, samples, mean) {
-  var points = [];
-  for (i = 0; i < samples; i++) {
-    var vector = [icdf(Math.Random) * mean[0], icdf(Math.Random) * mean[1], icdf(Math.Random) * mean[2]];
-    var multivariateVector = multiplyMatrixVector(covarianceMatrix, vector);
-    points.push(multivariateVector);
+function isOrthogonal(vectors, epsilon = 1e-10) {
+  for (let i = 0; i < vectors.length; i++) {
+    for (let j = i + 1; j < vectors.length; j++) {
+      let dot = 0;
+      for (let k = 0; k < vectors[i].length; k++) {
+        dot += vectors[i][k] * vectors[j][k];
+      }
+      if (Math.abs(dot) > epsilon) {
+        return false;
+      }
+    }
   }
-  return points;
+  return true;
 }
