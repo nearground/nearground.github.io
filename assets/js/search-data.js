@@ -81,17 +81,6 @@ ninja.data = [{
             window.location.href = "/blog/2025/understanding-convchain/";
           
         },
-      },{id: "post-my-site-is-up-and-running-again",
-        
-          title: "My Site is Up and Running again",
-        
-        description: "Whoo!",
-        section: "Posts",
-        handler: () => {
-          
-            window.location.href = "/blog/2025/my-site-is-up-and-running-again/";
-          
-        },
       },{id: "post-how-to-create-a-personal-website-and-blog-for-free",
         
           title: "How To Create a Personal Website and Blog for Free",
