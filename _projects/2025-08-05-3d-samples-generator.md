@@ -12,6 +12,7 @@ toc:
   sidebar: "left"
 category: fun
 ---
+
 In this example, we randomly sample from a multivariate (many-variable) normal (continuous, linear) distribution. In order to not just get random noise, I added the option to input a covariance matrix. This means that each row represents how each variable depends on the other two variables. For each sample point, three independent uniformly-distributed variables from -1 to 1 are first put through the _Mersenne Twister_ algorithm to generate normally-distributed samples, and then correlated via the _Cholesky decomposition_ of the covariance matrix to form a linear multivariate distribution. That is to say, the three-dimensional sample points are stretched and rotated according to whatever you put into the matrix. I made this app using browser javascript, but it's pretty computationally efficient. Feel free to give it a go! You can left-click and drag to pan around the axis center, and right-click drag to move the camera's center.
 
 <div class= "row mt-3 mt-md-0">
