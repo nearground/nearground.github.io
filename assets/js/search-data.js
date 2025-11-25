@@ -30,6 +30,13 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/cv/";
           },
+        },{id: "nav-projects",
+          title: "Projects",
+          description: "An unassorted collection of forays into procgen, ML, and other things.",
+          section: "Navigation",
+          handler: () => {
+            window.location.href = "/projects/";
+          },
         },{id: "nav-repositories",
           title: "Repositories",
           description: "A short curated list of my current work",
@@ -37,20 +44,20 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/repositories/";
           },
-        },{id: "post-an-interactive-3d-sample-generator",
+        },{id: "post-an-interactive-pca-visualizer",
         
-          title: "An Interactive 3d Sample Generator",
+          title: "An Interactive PCA visualizer",
         
-        description: "Generating samples for statistical exercises",
+        description: "Visualizing principal components in 3D space.",
         section: "Posts",
         handler: () => {
           
             window.location.href = "/blog/2025/3d-samples-generator/";
           
         },
-      },{id: "post-the-curse-of-dimensionality",
+      },{id: "post-into-to-principal-component-analysis",
         
-          title: "The Curse of Dimensionality",
+          title: "Into to Principal Component Analysis",
         
         description: "A browser implementation of Principal Component Analysis using pca-js",
         section: "Posts",
@@ -267,6 +274,11 @@ ninja.data = [{
           description: "",
           section: "News",handler: () => {
               window.location.href = "/news/2025-07-25-open-for-work/";
+            },},{id: "projects-an-interactive-pca-visualizer",
+          title: 'An Interactive PCA visualizer',
+          description: "Visualizing principal components in 3D space.",
+          section: "Projects",handler: () => {
+              window.location.href = "/projects/2025-08-05-3d-samples-generator/";
             },},{
         id: 'social-email',
         title: 'email',
