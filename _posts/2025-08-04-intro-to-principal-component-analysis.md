@@ -1,29 +1,27 @@
 ---
 layout: post
 gisqus_comments: "true"
-title: The Curse of Dimensionality
+title: Into to Principal Component Analysis
 date: 2025-08-04T0:05:00.000-07:00
 description: A browser implementation of Principal Component Analysis using pca-js
 tags: linear-algebra
 categories: mathematics statistics
 related_posts: "true"
 thumbnail: assets/img/StevePCA_width400.jpg
+toc:
+  sidebar: "left"
 ---
-
-(https://www.stat.cmu.edu/cmsac/sure/2022/materials/lectures/slides/14-PCA.html#6)
-
-## Dimensionality Reduction
 
 Statistics deals with finding order out of chaos. Sometimes, estimating variables is easy
 Oftentimes we find ourselves with more data than we know what to do with it. With more variables, more information. However, with more variables, there is also exponentially more complexity. This is called the _curse of dimensionality_. In order to avoid this fate, we use techniques for _dimensionality reduction_. That is, reducing the amount of variables down to just the most important ones. The techniques for achieving this fall under the umbrella of what is termed _Spectral Theory_. Spooky, but not so cursed.
 
-# Spectral Theory
+## Spectral Theory
 
 [Wikipedia](https://en.wikipedia.org/wiki/Spectral_theory):
 
 > In mathematics, spectral theory is an inclusive term for theories extending the eigenvector and eigenvalue theory of a single square matrix to a much broader theory of the structure of operators in a variety of mathematical spaces.
 
-# Principal Component Analysis
+## Principal Component Analysis
 
 From [Fritz' Blog](https://fritz.ai/demystifying-principal-component-analysis-handling-the-curse-of-dimensionality/)
 

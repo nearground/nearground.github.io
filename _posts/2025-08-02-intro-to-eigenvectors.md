@@ -8,6 +8,8 @@ tags: linear-algebra
 categories: mathematics statistics
 related_posts: "true"
 thumbnail: assets/img/eigenvector.jpg
+toc:
+  sidebar: "left"
 ---
 
 # Eigenvalues and Eigenvectors
@@ -24,7 +26,7 @@ Knowing the eigenvalues, we then solve for `(A-λI)x=0`, where the possible solu
 Woo-o-f!
 </div>
 
-Check out this set of exercises on calculating eigenvalues from [Libretexts.org](<https://math.libretexts.org/Courses/Cosumnes_River_College/Math_420%3A_Differential_Equations_(Breitenbach)/11%3A_Appendices/06%3A_Eigenvalues_and_Eigenvectors/6.01%3A_Exercises_4.1>). If you want to cheat, I've included a solver that somewhat works most of the time.
+Check out this set of exercises on calculating eigenvalues from [Libretexts.org](<https://math.libretexts.org/Courses/Cosumnes_River_College/Math_420%3A_Differential_Equations_(Breitenbach)/11%3A_Appendices/06%3A_Eigenvalues_and_Eigenvectors/6.01%3A_Exercises_4.1>). If you want to cheat, I've written a solver.
 
 <div class= "row">
   <div class ="left-column col-sm">
