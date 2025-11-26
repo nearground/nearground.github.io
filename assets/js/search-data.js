@@ -23,26 +23,12 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/books/";
           },
-        },{id: "nav-resume",
-          title: "Resume",
-          description: "This is a description of the page. You can modify it in &#39;_pages/cv.md&#39;. You can also change or remove the top pdf download button.",
-          section: "Navigation",
-          handler: () => {
-            window.location.href = "/cv/";
-          },
         },{id: "nav-projects",
           title: "Projects",
           description: "An unassorted collection of forays into procgen, ML, and other things.",
           section: "Navigation",
           handler: () => {
             window.location.href = "/projects/";
-          },
-        },{id: "nav-repositories",
-          title: "Repositories",
-          description: "A short curated list of my current work",
-          section: "Navigation",
-          handler: () => {
-            window.location.href = "/repositories/";
           },
         },{id: "post-an-interactive-pca-visualizer",
         
@@ -55,9 +41,9 @@ ninja.data = [{
             window.location.href = "/blog/2025/3d-samples-generator/";
           
         },
-      },{id: "post-into-to-principal-component-analysis",
+      },{id: "post-intro-to-principal-component-analysis",
         
-          title: "Into to Principal Component Analysis",
+          title: "Intro to Principal Component Analysis",
         
         description: "A browser implementation of Principal Component Analysis using pca-js",
         section: "Posts",
