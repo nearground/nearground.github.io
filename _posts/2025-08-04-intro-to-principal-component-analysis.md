@@ -1,7 +1,7 @@
 ---
 layout: post
 gisqus_comments: "true"
-title: Into to Principal Component Analysis
+title: Intro to Principal Component Analysis
 date: 2025-08-04T0:05:00.000-07:00
 description: A browser implementation of Principal Component Analysis using pca-js
 tags: linear-algebra
