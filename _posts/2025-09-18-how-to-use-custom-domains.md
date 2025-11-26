@@ -7,7 +7,7 @@ description: How to get a subdomain and pay next to nothing or less
 tags: vps google-cloud gce reverse-proxy
 categories: devops
 related_posts: "true"
-thumbnail: assets/img/spaceship-domains-783627529.png
+# thumbnail: assets/img/spaceship-domains-783627529.png
 toc:
   sidebar: "left"
 ---

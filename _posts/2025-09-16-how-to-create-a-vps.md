@@ -7,7 +7,7 @@ description: And still without spending any money!
 tags: vps google-cloud aws gce digital-ocean
 categories: devops
 related_posts: "true"
-thumbnail: assets/img/Compute_Engine.jpg
+# thumbnail: assets/img/Compute_Engine.jpg
 toc:
   sidebar: "left"
 ---

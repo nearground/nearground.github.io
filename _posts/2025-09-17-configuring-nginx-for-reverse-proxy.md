@@ -7,7 +7,7 @@ description: Demistifying reverse proxying. Or am I?
 tags: vps google-cloud gce reverse-proxy
 categories: devops
 related_posts: "true"
-thumbnail: assets/img/nginx.png
+# thumbnail: assets/img/nginx.png
 toc:
   sidebar: "left"
 ---

@@ -7,7 +7,7 @@ description: For Free (No, Actually)
 tags: vpn ipv4 cgnat firewall
 categories: devops
 related_posts: "true"
-thumbnail: assets/img/wireguard.png
+# thumbnail: assets/img/wireguard.png
 toc:
   sidebar: "left"
 ---

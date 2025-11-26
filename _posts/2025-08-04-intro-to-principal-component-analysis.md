@@ -7,7 +7,7 @@ description: A browser implementation of Principal Component Analysis using pca-
 tags: linear-algebra
 categories: mathematics statistics
 related_posts: "true"
-thumbnail: assets/img/StevePCA_width400.jpg
+# thumbnail: assets/img/StevePCA_width400.jpg
 toc:
   sidebar: "left"
 ---

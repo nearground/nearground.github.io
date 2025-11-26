@@ -7,7 +7,7 @@ description: If you can docker Fedora, you can docker ball.
 tags: vpn ipv4 cgnat firewall
 categories: devops
 related_posts: "true"
-thumbnail: assets/img/selinux.png
+# thumbnail: assets/img/selinux.png
 toc:
   sidebar: "left"
 ---
