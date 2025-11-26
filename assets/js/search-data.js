@@ -30,7 +30,62 @@ ninja.data = [{
           handler: () => {
             window.location.href = "/projects/";
           },
-        },{id: "post-an-interactive-pca-visualizer",
+        },{id: "post-self-hosting-through-a-cgnat-for-free-part-4-getting-a-subdomain",
+        
+          title: "Self Hosting Through A CGNAT For Free Part 4:  Getting a subdomain",
+        
+        description: "How to get a subdomain and pay next to nothing or less",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2025/how-to-use-custom-domains/";
+          
+        },
+      },{id: "post-self-hosting-through-a-cgnat-for-free-part-3-configuring-an-nginx-reverse-proxies",
+        
+          title: "Self Hosting Through A CGNAT For Free Part 3: Configuring an NGINX Reverse...",
+        
+        description: "Demistifying reverse proxying. Or am I?",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2025/configuring-nginx-for-reverse-proxy/";
+          
+        },
+      },{id: "post-self-hosting-through-a-cgnat-for-free-part-2-how-to-setup-your-a-free-vps",
+        
+          title: "Self Hosting Through A CGNAT For Free Part 2: How to setup your...",
+        
+        description: "And still without spending any money!",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2025/how-to-create-a-vps/";
+          
+        },
+      },{id: "post-self-hosting-through-a-cgnat-for-free-part-1-how-to-setup-your-own-vpn",
+        
+          title: "Self Hosting Through A CGNAT For Free Part 1: How to setup your...",
+        
+        description: "For Free (No, Actually)",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2025/how-to-create-a-vpn/";
+          
+        },
+      },{id: "post-how-to-easily-serve-docker-services-in-se-linux-with-compose",
+        
+          title: "How to easily serve docker services in SE-Linux with compose",
+        
+        description: "If you can docker Fedora, you can docker ball.",
+        section: "Posts",
+        handler: () => {
+          
+            window.location.href = "/blog/2025/serve-on-rootless-docker-selinux/";
+          
+        },
+      },{id: "post-an-interactive-pca-visualizer",
         
           title: "An Interactive PCA visualizer",
         
