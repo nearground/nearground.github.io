@@ -34,7 +34,7 @@ ninja.data = [{
         
           title: "Self Hosting Through A CGNAT For Free Part 4:  Getting a subdomain",
         
-        description: "How to get a subdomain and pay next to nothing or less",
+        description: "",
         section: "Posts",
         handler: () => {
           
@@ -45,7 +45,7 @@ ninja.data = [{
         
           title: "Self Hosting Through A CGNAT For Free Part 3: Configuring an NGINX Reverse...",
         
-        description: "Demistifying reverse proxying. Or am I?",
+        description: "",
         section: "Posts",
         handler: () => {
           
@@ -56,7 +56,7 @@ ninja.data = [{
         
           title: "Self Hosting Through A CGNAT For Free Part 2: How to setup your...",
         
-        description: "And still without spending any money!",
+        description: "",
         section: "Posts",
         handler: () => {
           
@@ -67,7 +67,7 @@ ninja.data = [{
         
           title: "Self Hosting Through A CGNAT For Free Part 1: How to setup your...",
         
-        description: "For Free (No, Actually)",
+        description: "",
         section: "Posts",
         handler: () => {
           
@@ -78,7 +78,7 @@ ninja.data = [{
         
           title: "How to easily serve docker services in SE-Linux with compose",
         
-        description: "If you can docker Fedora, you can docker ball.",
+        description: "",
         section: "Posts",
         handler: () => {
           
@@ -122,7 +122,7 @@ ninja.data = [{
         
           title: "Understanding ConvChain",
         
-        description: "A not-so-gentle introduction to programming procedural generation with an interactive demo",
+        description: "",
         section: "Posts",
         handler: () => {
           
@@ -133,7 +133,7 @@ ninja.data = [{
         
           title: "How To Create a Personal Website and Blog for Free",
         
-        description: "How to build a blog on Github Pages",
+        description: "",
         section: "Posts",
         handler: () => {
           
