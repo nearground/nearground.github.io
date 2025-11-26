@@ -3,7 +3,7 @@ layout: post
 gisqus_comments: "true"
 title: How To Create a Personal Website and Blog for Free
 date: 2023-08-30T01:11:44.605Z
-description: How to build a blog on Github Pages
+#description: How to build a blog on Github Pages
 giscus_comments: "true"
 related_posts: "true"
 tags: jekyll blog

@@ -3,7 +3,7 @@ layout: post
 gisqus_comments: "true"
 title: "Self Hosting Through A CGNAT For Free Part 2:  How to setup your a free VPS"
 date: 2025-09-16T0:37:00.000-07:00
-description: And still without spending any money!
+#description: And still without spending any money!
 tags: vps google-cloud aws gce digital-ocean
 categories: devops
 related_posts: "true"

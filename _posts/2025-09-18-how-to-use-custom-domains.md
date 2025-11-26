@@ -3,7 +3,7 @@ layout: post
 gisqus_comments: "true"
 title: "Self Hosting Through A CGNAT For Free Part 4:  Getting a subdomain"
 date: 2025-09-18T0:37:00.000-07:00
-description: How to get a subdomain and pay next to nothing or less
+#description: How to get a subdomain and pay next to nothing or less
 tags: vps google-cloud gce reverse-proxy
 categories: devops
 related_posts: "true"

@@ -7,7 +7,7 @@ description: With an interactive app
 tags: linear-algebra
 categories: mathematics statistics
 related_posts: "true"
-# thumbnail: assets/img/eigenvector.jpg
+#thumbnail: assets/img/eigenvector.jpg
 toc:
   sidebar: "left"
 ---

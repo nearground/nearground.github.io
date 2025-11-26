@@ -3,7 +3,7 @@ layout: post
 gisqus_comments: "true"
 title: "Self Hosting Through A CGNAT For Free Part 3: Configuring an NGINX Reverse Proxies"
 date: 2025-09-17T0:37:00.000-07:00
-description: Demistifying reverse proxying. Or am I?
+#description: Demistifying reverse proxying. Or am I?
 tags: vps google-cloud gce reverse-proxy
 categories: devops
 related_posts: "true"

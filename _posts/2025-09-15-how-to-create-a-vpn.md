@@ -3,7 +3,7 @@ layout: post
 gisqus_comments: "true"
 title: "Self Hosting Through A CGNAT For Free Part 1:  How to setup your own VPN"
 date: 2025-09-15T0:37:00.000-07:00
-description: For Free (No, Actually)
+#description: For Free (No, Actually)
 tags: vpn ipv4 cgnat firewall
 categories: devops
 related_posts: "true"
